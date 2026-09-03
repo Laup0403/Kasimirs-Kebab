@@ -1,0 +1,20 @@
+{
+  "runtime.version": "LuaJIT",
+    "workspace.ignoreGlobs": [
+      "*.love",
+      "*.zip",
+      "*.png"
+    ],
+    "diagnostics.disable": [
+      "lowercase-global",
+      "undefined-global"
+    ],
+    "workspace.maxPreload": 1000,
+
+  "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+  "workspace.library": ["../love2d-luacats"],
+  "runtime.special": {
+    "love.filesystem.load": "loadfile"
+  },
+    "completion.autoRequire": false
+}
