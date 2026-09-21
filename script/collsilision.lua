@@ -8,7 +8,8 @@ local function createColl(ID, x, y, w, h, isWall, onOverlap)
         w = w,
         h = h,
         wall = isWall,
-        overlap = onOverlap
+        overlap = onOverlap,
+        isactive = true
     }
 end
 
@@ -23,31 +24,11 @@ local function removeColl(ID)
     boxes[ID] = nil
 end
 
---[[function collide()
-    local collisions = {}
-
-    for i = 1, #boxes - 1 do
-        local b1 = boxes[i]
-        for j = i + 1, #boxes do
-            local b2 = boxes[j]
-
-            if checkColl(b1.x, b1.y, b1.w, b1.h, b2.x, b2.y, b2.w, b2.h) then
-                print("Collide!")
-                table.insert(collisions, { boxA = i, BoxB = j })
-            else
-                print("Not Collide")
-            end
-        end
-    end
-
-    return collisions
-end]]
-
-local function collidePlayer(dir,x,y)
-    local p = boxes["player"]
+--[[local function collidePlayer(hitbox,dir,x,y)
+    local p = boxes[hitbox]
 
     for id, box in pairs(boxes) do
-        if id ~= "player" then
+        if id ~= "player" and box.isactive then
             if checkColl(p.x, p.y, p.w, p.h, box.x, box.y, box.w, box.h) then
                 if box.wall == false then
                     box.overlap()
@@ -65,10 +46,51 @@ local function collidePlayer(dir,x,y)
             end
         end
     end
+end]]
+
+local function collidewith(box1, box2)
+    local a
+    if type(box1) == "table" then
+        a = box1
+    elseif type(box1) == "string" then
+        a = boxes[box1]
+    end
+
+    local b
+    if type(box2) == "table" then
+        b = box2
+    elseif type(box2) == "string" then
+        b = boxes[box2]
+    end
+
+    if not a or not b  then
+        return false
+    end
+
+    if not a.isactive or not b.isactive then
+        return false
+    end
+
+    return checkColl(
+        a.x, a.y, a.w, a.h,
+        b.x, b.y, b.w, b.h
+    )
+
 end
 
-Coll.collide = collidePlayer
+local function activate(ID)
+    box = boxes[ID].isactive
+    if box == true then
+        box = false
+    elseif box == false then
+        box = true
+    end
+    boxes[ID].isactive = box
+end
+
+Coll.collide = collidewith
 Coll.create = createColl
 Coll.remove = removeColl
+Coll.activate = activate
 
 return Coll

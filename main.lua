@@ -12,8 +12,9 @@ function love.load()
     Intro = require 'script/intro'
     Chapter1 = require 'script/chapter1'
     Menu = require 'script/menu'
+    Fight = require 'script/fight'
 
-    Gamestate = "chapter1"
+    Gamestate = "menu"
     Switch = true
 
     Keys = {
@@ -25,14 +26,19 @@ function love.load()
         action2 = "x",
     }
 
+    math.randomseed(os.time())
+    math.random()
+    math.random()
+    math.random()
 end
 
 function love.update(dt)
+    Textbox.update(dt)
     if Gamestate == "menu" then Menu.load()
     elseif ({intro=true , hansrakete=true, hans=true, ticklemonster=true})[Gamestate] then Intro.update(dt)
     elseif Gamestate == "chapter1" then Chapter1.update(dt) end
 
-    --print("X:" .. Player.x .. " Y:" .. Player.y)
+    -- print("X:" .. Player.x .. " Y:" .. Player.y)
 end
 
 function love.draw()
@@ -44,6 +50,10 @@ function love.draw()
 
     ---Textbox---
     Textbox.show()
+
+    --- Pixel fix ---
+    love.graphics.setColor(0,0,0)
+    love.graphics.rectangle("fill", -1, -1, 1, 91)
 
     Push:finish()
     love.graphics.setColor(1, 1, 1)

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.12.2" orientation="orthogonal" renderorder="right-down" width="10" height="6" tilewidth="16" tileheight="16" infinite="0" nextlayerid="2" nextobjectid="1">
+ <tileset firstgid="1" name="Tilemap" tilewidth="16" tileheight="16" tilecount="32" columns="8">
+  <image source="../sprites/Chapter1/Tilemap.png" width="128" height="64"/>
+ </tileset>
+ <layer id="1" name="Tile Layer 1" width="10" height="6">
+  <data encoding="csv">
+12,12,12,12,12,12,12,12,12,12,
+4,4,4,4,4,4,4,4,4,4,
+2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2
+</data>
+ </layer>
+</map>
