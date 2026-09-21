@@ -1,5 +1,5 @@
 local chapter = {}
-chapter.state = "fightintro"
+chapter.state = "none"
 local cx, cy = 0, 0
 local rx, ry = 0, 0
 local nervigkeit = 1
