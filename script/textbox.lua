@@ -59,6 +59,9 @@ local function checkInput(key)
             end
 
         elseif readState == "ready" then
+
+            Switchsound:play()
+
             -- Choice
             if text.c == true then
                 if key == Keys.action2 or key == Keys.action2 then

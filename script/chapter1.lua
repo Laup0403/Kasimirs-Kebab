@@ -7,11 +7,15 @@ local speak = false
 local timer = 0
 local projectiles = 0
 
-
-local intro = love.audio.newSource("audio/CyberJungleIntro.ogg", "stream")
-local normal = love.audio.newSource("audio/CyberJungleIntro.ogg", "stream")
+local intro = love.audio.newSource("audio/CyberJungleÜbergang.ogg", "stream")
+local normal = love.audio.newSource("audio/CyberJungleMain.ogg", "stream")
 local loop = false
 local started = false
+
+local fail = love.audio.newSource("audio/Effekte/fail.mp3", "static")
+local win = love.audio.newSource("audio/kasiger-michael.mp3", "stream")
+local goodKatz = love.graphics.newImage("sprites/Chapter1/CoolKatze.png")
+local badKatz = love.graphics.newImage("sprites/Chapter1/BadKatze.png")
 
 local function loadColl()
     Coll.create("walldown", -90, 170, 800, 1, true)
@@ -21,6 +25,7 @@ local function loadColl()
     Coll.create("walllinks", -91, -112, 1, 282, true)
     Coll.create("walleingin", 690, 102, 1, 68, true)
     Coll.create("MsMauer", 112, -112, 112, 42, false, function() chapter.state = "msmauer" end)
+
 end
 
 local function loadAssets()
@@ -52,13 +57,13 @@ local function checkCollision(dt)
         intro:setLooping(false)
         normal:setLooping(true)
 
-        -- if not started then
-            -- intro:play()
-            -- started = true
-        -- elseif not intro:isPlaying() and not normal:isPlaying() then
-            -- normal:play()
-            -- loop = true
-        -- end
+        if not started then
+            intro:play()
+            started = true
+        elseif not intro:isPlaying() and not normal:isPlaying() then
+            normal:play()
+            loop = true
+        end
 
         if not boxes["bossdown"] then
             Coll.create("bossdown", 62, 2, 220, 1, true)
@@ -144,6 +149,22 @@ local function checkCollision(dt)
             end
         end
 
+        -- Check state --
+
+        if Fight.playerhealth and Fight.enemyhealth then
+        if Fight.playerhealth <= 0 then
+            chapter.state = "gameover"
+            intro:pause()
+            normal:pause()
+            fail:play()
+        elseif Fight.enemyhealth <= 0 then
+            chapter.state = "win"
+            intro:pause()
+            normal:pause()
+            win:play()
+        end
+        end
+
     -------------------------------------------------------
     elseif nervigkeit == 5 and chapter.state == "rock" then
     -------------------------------------------------------
@@ -220,8 +241,10 @@ local function update(dt)
         Player.setup(549,137,'l')
         loadColl()
         loadAssets()
+        chapter.state = "none"
         Switch = false
         Player.canmove = true
+        Camera.setScale(1)
     end
     Player.area = "none"
     Camera.setTarget(Player.x + cx, Player.y + cy - 16)
@@ -237,7 +260,7 @@ local function draw()
         Camera:attach()
         map:drawLayer(map.layers["Floor"])
         map:drawLayer(map.layers["Flowers"])
-        map:drawLayer(map.layers["Black Pink in your Area"])
+        if chapter.state == "fightintro" then map:drawLayer(map.layers["Black Pink in your Area"]) end
 
         wall.anim:draw(wall.sprite, 152, -140)
 
@@ -261,12 +284,42 @@ local function draw()
             Fight.load(100)
             Fight.ui()
         end
+
+        if chapter.state == "win" then
+            love.graphics.setColor(0,0,0)
+            love.graphics.rectangle("fill", -1, -1, 162, 92)
+            love.graphics.setColor(0,1,0)
+            love.graphics.print("You win, oida!", (Push:getWidth()*0.5) - (Font:getWidth("You win, oida!")/2), 75, 0, 1)
+            love.graphics.setColor(1,1,1)
+            love.graphics.draw(goodKatz, (Push:getWidth()*0.5) - (goodKatz:getWidth()*0.5*0.2) , 0, 0, 0.2, 0.2)
+        end
+        if chapter.state == "gameover" then
+            love.graphics.setColor(0,0,0)
+            love.graphics.rectangle("fill", -1, -1, 162, 92)
+            love.graphics.setColor(0,1,0)
+            love.graphics.print("What are you doing?", (Push:getWidth()*0.5) - (Font:getWidth("What are you doing?")/2), 75, 0, 1)
+            love.graphics.setColor(1,1,1)
+            love.graphics.draw(badKatz, (Push:getWidth()*0.5) - (badKatz:getWidth()*0.5*0.2) , 0, 0, 0.2, 0.2)
+        end
     end
 end
 
 local function input(key)
     if Textbox.visible then
         Textbox.input(key)
+
+    ----------------------------------
+    elseif chapter.state == "win" then
+    ----------------------------------
+
+        Gamestate = "menu"
+        Switch = true
+
+    ---------------------------------------
+    elseif chapter.state == "gameover" then
+    ---------------------------------------
+
+        Switch = true
 
     -----------------------------------------
     elseif chapter.state == "fightintro" then

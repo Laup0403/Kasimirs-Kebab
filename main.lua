@@ -22,9 +22,10 @@ function love.load()
         down = "down",
         left = "left",
         right = "right",
-        action1 = "y",
+        action1 = "z",
         action2 = "x",
     }
+    Switchsound = love.audio.newSource("audio/Effekte/switch.wav", "static")
 
     math.randomseed(os.time())
     math.random()
