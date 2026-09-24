@@ -1,5 +1,5 @@
 # Kasimirs Kebab
-an story game by Laupi_oida made in love2d<br>
+a story game by Laupi_oida made in LÖVE2D<br>
 ### This game is currently in development
 ### Playable at https://laup0403.github.io/Kasimirs-Kebab/
 ## What is it about?
