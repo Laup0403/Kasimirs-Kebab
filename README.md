@@ -12,4 +12,4 @@ X -> Action2/No<br>
 <br>
 The Controls can also be changed in the settings
 
-### Note: This game is currently in development
+### Note: This is the old version made in love2d. The new version is in the main branch
