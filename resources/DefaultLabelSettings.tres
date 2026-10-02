@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://do44h2jl4f502"]
+
+[ext_resource type="FontFile" uid="uid://uwdkfw1i008k" path="res://sprites/Comicoro.ttf" id="1_s1n4o"]
+
+[resource]
+line_spacing = -36.0
+font = ExtResource("1_s1n4o")
+font_size = 1
+font_color = Color(0, 0, 0, 1)

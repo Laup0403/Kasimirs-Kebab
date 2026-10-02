@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cblgthifee85"]
+
+[ext_resource type="Texture2D" uid="uid://c5or2b1n78r4b" path="res://sprites/Textbox.png" id="1_g5d5p"]
+[ext_resource type="Script" uid="uid://bmxy6ks2pp72t" path="res://script/textbox.gd" id="1_qagdh"]
+[ext_resource type="FontFile" uid="uid://uwdkfw1i008k" path="res://sprites/Comicoro.ttf" id="2_qagdh"]
+[ext_resource type="Texture2D" uid="uid://de2o88iac3no2" path="res://sprites/Textboxbuffer.png" id="3_c4wvf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qagdh"]
+line_spacing = -36.0
+font = ExtResource("2_qagdh")
+font_size = 132
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1rgox"]
+line_spacing = -80.0
+font = ExtResource("2_qagdh")
+font_size = 96
+font_color = Color(0, 0, 0, 1)
+
+[node name="Textbox" type="CanvasLayer" unique_id=1511982094]
+script = ExtResource("1_qagdh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=427629255]
+scale = Vector2(12, 12)
+texture = ExtResource("1_g5d5p")
+centered = false
+
+[node name="Text" type="Label" parent="." unique_id=899293444]
+texture_filter = 1
+texture_repeat = 1
+offset_left = 401.0
+offset_top = 705.0
+offset_right = 1532.0
+offset_bottom = 1014.0
+text = "Moin oida
+Oida
+OIDA!!!"
+label_settings = SubResource("LabelSettings_qagdh")
+autowrap_trim_flags = 0
+
+[node name="Name" type="Label" parent="." unique_id=1233413044]
+texture_filter = 1
+texture_repeat = 1
+offset_left = 401.0
+offset_top = 658.0
+offset_right = 927.0
+offset_bottom = 777.0
+text = ">Klaus"
+label_settings = SubResource("LabelSettings_1rgox")
+
+[node name="Checker" type="Sprite2D" parent="." unique_id=25156333]
+position = Vector2(960, 1020)
+scale = Vector2(12, 12)
+texture = ExtResource("3_c4wvf")

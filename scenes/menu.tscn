@@ -1,0 +1,384 @@
+[gd_scene format=3 uid="uid://s8vwe005c37h"]
+
+[ext_resource type="Script" uid="uid://brpwfrlbkrb2m" path="res://script/menu.gd" id="1_mhnvy"]
+[ext_resource type="Texture2D" uid="uid://dd1uq7flwumiu" path="res://sprites/Menu/TitelBild.png" id="1_yqeox"]
+[ext_resource type="PackedScene" uid="uid://vgeye0x4a7o5" path="res://scenes/übergang.tscn" id="2_13sgg"]
+[ext_resource type="Texture2D" uid="uid://c8wmlhnul1iy7" path="res://sprites/Menu/button.png" id="2_vjb58"]
+[ext_resource type="FontFile" uid="uid://uwdkfw1i008k" path="res://sprites/Comicoro.ttf" id="3_con2f"]
+[ext_resource type="Texture2D" uid="uid://cythuqpt7w3in" path="res://sprites/Menu/exit.png" id="5_4ytvr"]
+[ext_resource type="Texture2D" uid="uid://lyt0vyv5teqh" path="res://sprites/Menu/Settings.png" id="6_v86rl"]
+[ext_resource type="Texture2D" uid="uid://bfx8aqnh6mprc" path="res://sprites/Menu/settingsbutton.png" id="7_13sgg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mhnvy"]
+line_spacing = -36.0
+font = ExtResource("3_con2f")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwks1"]
+size = Vector2(49, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v86rl"]
+size = Vector2(12, 12)
+
+[sub_resource type="LabelSettings" id="LabelSettings_i6lef"]
+line_spacing = -36.0
+font = ExtResource("3_con2f")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_13sgg"]
+size = Vector2(69, 12)
+
+[node name="Main" type="Node2D" unique_id=259728450]
+script = ExtResource("1_mhnvy")
+
+[node name="Übergang" parent="." unique_id=1732988919 instance=ExtResource("2_13sgg")]
+scale = Vector2(12, 12)
+transform = Transform2D(12, 0, 0, 12, 0, 0)
+
+[node name="Background" type="Sprite2D" parent="." unique_id=352356686]
+texture = ExtResource("1_yqeox")
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1323330574]
+anchor_mode = 0
+zoom = Vector2(12, 12)
+
+[node name="Buttons" type="Node2D" parent="." unique_id=1532467598]
+
+[node name="Main" type="Node2D" parent="Buttons" unique_id=1908678778]
+visible = false
+
+[node name="Start" type="Sprite2D" parent="Buttons/Main" unique_id=1768215047]
+position = Vector2(9, 42)
+texture = ExtResource("2_vjb58")
+centered = false
+hframes = 2
+
+[node name="Label" type="Label" parent="Buttons/Main/Start" unique_id=842201356]
+offset_left = 12.0
+offset_top = -2.0
+offset_right = 52.0
+offset_bottom = 13.0
+text = "Start
+"
+label_settings = SubResource("LabelSettings_mhnvy")
+
+[node name="Area2D" type="Area2D" parent="Buttons/Main/Start" unique_id=1700989308]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/Main/Start/Area2D" unique_id=200269811]
+position = Vector2(24.5, 6)
+shape = SubResource("RectangleShape2D_gwks1")
+
+[node name="Load" type="Sprite2D" parent="Buttons/Main" unique_id=134749584]
+position = Vector2(9, 57)
+texture = ExtResource("2_vjb58")
+centered = false
+hframes = 2
+
+[node name="Label" type="Label" parent="Buttons/Main/Load" unique_id=465638844]
+offset_left = 11.0
+offset_top = -2.0
+offset_right = 51.0
+offset_bottom = 13.0
+text = "Load
+"
+label_settings = SubResource("LabelSettings_mhnvy")
+
+[node name="Area2D" type="Area2D" parent="Buttons/Main/Load" unique_id=1009500094]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/Main/Load/Area2D" unique_id=495942726]
+position = Vector2(24.5, 6)
+shape = SubResource("RectangleShape2D_gwks1")
+
+[node name="Settings" type="Sprite2D" parent="Buttons/Main" unique_id=1760618528]
+position = Vector2(9, 72)
+texture = ExtResource("2_vjb58")
+centered = false
+hframes = 2
+
+[node name="Label" type="Label" parent="Buttons/Main/Settings" unique_id=708942261]
+offset_left = 6.0
+offset_top = -2.0
+offset_right = 46.0
+offset_bottom = 13.0
+text = "Settings"
+label_settings = SubResource("LabelSettings_mhnvy")
+
+[node name="Area2D" type="Area2D" parent="Buttons/Main/Settings" unique_id=843270248]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/Main/Settings/Area2D" unique_id=642249097]
+position = Vector2(24.5, 6)
+shape = SubResource("RectangleShape2D_gwks1")
+
+[node name="Exit" type="Sprite2D" parent="Buttons/Main" unique_id=808393267]
+position = Vector2(61, 72)
+texture = ExtResource("5_4ytvr")
+centered = false
+hframes = 2
+
+[node name="Label" type="Label" parent="Buttons/Main/Exit" unique_id=1787072937]
+offset_left = 4.0
+offset_top = -2.0
+offset_right = 11.0
+offset_bottom = 13.0
+text = "©"
+label_settings = SubResource("LabelSettings_mhnvy")
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Buttons/Main/Exit" unique_id=1347937467]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/Main/Exit/Area2D" unique_id=2128963180]
+position = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_v86rl")
+
+[node name="Load" type="Node2D" parent="Buttons" unique_id=2041664919]
+visible = false
+
+[node name="Bg" type="Sprite2D" parent="Buttons/Load" unique_id=242130928]
+texture = ExtResource("6_v86rl")
+centered = false
+
+[node name="Chapter1" type="Sprite2D" parent="Buttons/Load" unique_id=1193357150]
+position = Vector2(9, 14)
+texture = ExtResource("7_13sgg")
+centered = false
+hframes = 2
+
+[node name="Label" type="Label" parent="Buttons/Load/Chapter1" unique_id=159039953]
+offset_top = -2.0
+offset_right = 69.0
+offset_bottom = 13.0
+text = "Chapter1	"
+label_settings = SubResource("LabelSettings_i6lef")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="Buttons/Load/Chapter1" unique_id=317742534]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/Load/Chapter1/Area2D" unique_id=2044832576]
+position = Vector2(34.5, 6)
+shape = SubResource("RectangleShape2D_13sgg")
+
+[node name="Chapter2" type="Sprite2D" parent="Buttons/Load" unique_id=850491276]
+position = Vector2(82, 14)
+texture = ExtResource("7_13sgg")
+centered = false
+hframes = 2
+
+[node name="Label" type="Label" parent="Buttons/Load/Chapter2" unique_id=1871726775]
+anchors_preset = -1
+anchor_left = -0.1884058
+anchor_right = 0.23188406
+offset_left = 13.0
+offset_top = -2.0
+offset_right = 53.0
+offset_bottom = 13.0
+text = "Chapter2"
+label_settings = SubResource("LabelSettings_i6lef")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Buttons/Load/Chapter2" unique_id=185092513]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/Load/Chapter2/Area2D" unique_id=190362702]
+position = Vector2(34.5, 6)
+shape = SubResource("RectangleShape2D_13sgg")
+
+[node name="Back" type="Sprite2D" parent="Buttons/Load" unique_id=2144129145]
+position = Vector2(9, 31)
+texture = ExtResource("7_13sgg")
+centered = false
+hframes = 2
+
+[node name="Label" type="Label" parent="Buttons/Load/Back" unique_id=265981731]
+offset_top = -2.0
+offset_right = 69.0
+offset_bottom = 13.0
+text = "Back"
+label_settings = SubResource("LabelSettings_i6lef")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="Buttons/Load/Back" unique_id=224757496]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/Load/Back/Area2D" unique_id=255453633]
+position = Vector2(34.5, 6)
+shape = SubResource("RectangleShape2D_13sgg")
+
+[node name="Settings" type="Node2D" parent="Buttons" unique_id=384088134]
+
+[node name="Bg" type="Sprite2D" parent="Buttons/Settings" unique_id=105150484]
+texture = ExtResource("6_v86rl")
+centered = false
+
+[node name="Up" type="Sprite2D" parent="Buttons/Settings" unique_id=949714906]
+position = Vector2(9, 14)
+texture = ExtResource("7_13sgg")
+centered = false
+hframes = 2
+
+[node name="Label" type="Label" parent="Buttons/Settings/Up" unique_id=222700426]
+offset_top = -2.0
+offset_right = 69.0
+offset_bottom = 13.0
+text = "Up"
+label_settings = SubResource("LabelSettings_i6lef")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="Buttons/Settings/Up" unique_id=582101304]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/Settings/Up/Area2D" unique_id=1242651490]
+position = Vector2(34.5, 6)
+shape = SubResource("RectangleShape2D_13sgg")
+
+[node name="Down" type="Sprite2D" parent="Buttons/Settings" unique_id=943008345]
+position = Vector2(9, 31)
+texture = ExtResource("7_13sgg")
+centered = false
+hframes = 2
+
+[node name="Label" type="Label" parent="Buttons/Settings/Down" unique_id=1521799239]
+offset_top = -2.0
+offset_right = 69.0
+offset_bottom = 13.0
+text = "Down"
+label_settings = SubResource("LabelSettings_i6lef")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="Buttons/Settings/Down" unique_id=920130163]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/Settings/Down/Area2D" unique_id=1073676518]
+position = Vector2(34.5, 6)
+shape = SubResource("RectangleShape2D_13sgg")
+
+[node name="Left" type="Sprite2D" parent="Buttons/Settings" unique_id=598462509]
+position = Vector2(9, 48)
+texture = ExtResource("7_13sgg")
+centered = false
+hframes = 2
+
+[node name="Label" type="Label" parent="Buttons/Settings/Left" unique_id=266090563]
+offset_top = -2.0
+offset_right = 69.0
+offset_bottom = 13.0
+text = "Left"
+label_settings = SubResource("LabelSettings_i6lef")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="Buttons/Settings/Left" unique_id=727983533]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/Settings/Left/Area2D" unique_id=1576657156]
+position = Vector2(34.5, 6)
+shape = SubResource("RectangleShape2D_13sgg")
+
+[node name="Right" type="Sprite2D" parent="Buttons/Settings" unique_id=420374099]
+position = Vector2(9, 64)
+texture = ExtResource("7_13sgg")
+centered = false
+hframes = 2
+
+[node name="Label" type="Label" parent="Buttons/Settings/Right" unique_id=1082011628]
+offset_top = -2.0
+offset_right = 69.0
+offset_bottom = 13.0
+text = "Right"
+label_settings = SubResource("LabelSettings_i6lef")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="Buttons/Settings/Right" unique_id=1830866822]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/Settings/Right/Area2D" unique_id=1426296508]
+position = Vector2(34.5, 6)
+shape = SubResource("RectangleShape2D_13sgg")
+
+[node name="Action1" type="Sprite2D" parent="Buttons/Settings" unique_id=1075694495]
+position = Vector2(82, 14)
+texture = ExtResource("7_13sgg")
+centered = false
+hframes = 2
+
+[node name="Label" type="Label" parent="Buttons/Settings/Action1" unique_id=35674584]
+anchors_preset = -1
+anchor_left = -0.1884058
+anchor_right = 0.23188406
+offset_left = 13.0
+offset_top = -2.0
+offset_right = 53.0
+offset_bottom = 13.0
+text = "Action1"
+label_settings = SubResource("LabelSettings_i6lef")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Buttons/Settings/Action1" unique_id=595760203]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/Settings/Action1/Area2D" unique_id=1642463760]
+position = Vector2(34.5, 6)
+shape = SubResource("RectangleShape2D_13sgg")
+
+[node name="Action2" type="Sprite2D" parent="Buttons/Settings" unique_id=577436650]
+position = Vector2(82, 31)
+texture = ExtResource("7_13sgg")
+centered = false
+hframes = 2
+
+[node name="Label" type="Label" parent="Buttons/Settings/Action2" unique_id=1477281760]
+offset_top = -2.0
+offset_right = 69.0
+offset_bottom = 13.0
+text = "Action2"
+label_settings = SubResource("LabelSettings_i6lef")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="Buttons/Settings/Action2" unique_id=79971322]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/Settings/Action2/Area2D" unique_id=1724698152]
+position = Vector2(34.5, 6)
+shape = SubResource("RectangleShape2D_13sgg")
+
+[node name="Back" type="Sprite2D" parent="Buttons/Settings" unique_id=1279999406]
+position = Vector2(82, 48)
+texture = ExtResource("7_13sgg")
+centered = false
+hframes = 2
+
+[node name="Label" type="Label" parent="Buttons/Settings/Back" unique_id=1768768648]
+offset_top = -2.0
+offset_right = 69.0
+offset_bottom = 13.0
+text = "Back"
+label_settings = SubResource("LabelSettings_i6lef")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="Buttons/Settings/Back" unique_id=2071670639]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/Settings/Back/Area2D" unique_id=2061185008]
+position = Vector2(34.5, 6)
+shape = SubResource("RectangleShape2D_13sgg")
+
+[connection signal="mouse_entered" from="Buttons/Main/Start/Area2D" to="." method="_start_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/Main/Start/Area2D" to="." method="_mouse_exited"]
+[connection signal="mouse_entered" from="Buttons/Main/Load/Area2D" to="." method="_load_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/Main/Load/Area2D" to="." method="_mouse_exited"]
+[connection signal="mouse_entered" from="Buttons/Main/Settings/Area2D" to="." method="_settings_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/Main/Settings/Area2D" to="." method="_mouse_exited"]
+[connection signal="mouse_entered" from="Buttons/Main/Exit/Area2D" to="." method="_exit_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/Main/Exit/Area2D" to="." method="_mouse_exited"]
+[connection signal="mouse_entered" from="Buttons/Load/Chapter1/Area2D" to="." method="_chapter1_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/Load/Chapter1/Area2D" to="." method="_mouse_exited"]
+[connection signal="mouse_entered" from="Buttons/Load/Chapter2/Area2D" to="." method="_chapter2_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/Load/Chapter2/Area2D" to="." method="_mouse_exited"]
+[connection signal="mouse_entered" from="Buttons/Load/Back/Area2D" to="." method="_back_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/Load/Back/Area2D" to="." method="_mouse_exited"]
+[connection signal="mouse_entered" from="Buttons/Settings/Up/Area2D" to="." method="_up_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/Settings/Up/Area2D" to="." method="_mouse_exited"]
+[connection signal="mouse_entered" from="Buttons/Settings/Down/Area2D" to="." method="_down_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/Settings/Down/Area2D" to="." method="_mouse_exited"]
+[connection signal="mouse_entered" from="Buttons/Settings/Left/Area2D" to="." method="_left_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/Settings/Left/Area2D" to="." method="_mouse_exited"]
+[connection signal="mouse_entered" from="Buttons/Settings/Right/Area2D" to="." method="_right_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/Settings/Right/Area2D" to="." method="_mouse_exited"]
+[connection signal="mouse_entered" from="Buttons/Settings/Action1/Area2D" to="." method="_action1_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/Settings/Action1/Area2D" to="." method="_mouse_exited"]
+[connection signal="mouse_entered" from="Buttons/Settings/Action2/Area2D" to="." method="_action2_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/Settings/Action2/Area2D" to="." method="_mouse_exited"]
+[connection signal="mouse_entered" from="Buttons/Settings/Back/Area2D" to="." method="_back_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/Settings/Back/Area2D" to="." method="_mouse_exited"]
