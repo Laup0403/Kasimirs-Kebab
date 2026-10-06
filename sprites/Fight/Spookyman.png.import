@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfnmpi3ly431e"
-path="res://.godot/imported/fight.png-7a3acfa66253d2572c6ed09b4a240c4f.ctex"
+uid="uid://cfq2kd36b1loj"
+path="res://.godot/imported/Spookyman.png-0a8e35716451c1bf6db573e2304ee1c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/fight.png"
-dest_files=["res://.godot/imported/fight.png-7a3acfa66253d2572c6ed09b4a240c4f.ctex"]
+source_file="res://sprites/Fight/Spookyman.png"
+dest_files=["res://.godot/imported/Spookyman.png-0a8e35716451c1bf6db573e2304ee1c8.ctex"]
 
 [params]
 

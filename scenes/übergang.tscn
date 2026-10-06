@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://vgeye0x4a7o5"]
 
 [ext_resource type="Texture2D" uid="uid://byh6bmleprd5j" path="res://sprites/Fight/CoolAnimation.png" id="1_lsjrj"]
-[ext_resource type="Script" uid="uid://cpa8p4eokirus" path="res://script/ubergang.gd" id="1_yfyqw"]
+[ext_resource type="Script" uid="uid://cpa8p4eokirus" path="res://script/utility/ubergang.gd" id="1_yfyqw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yfyqw"]
 atlas = ExtResource("1_lsjrj")

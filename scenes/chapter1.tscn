@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://b1rs6qhd8sjq3"]
 
-[ext_resource type="Script" uid="uid://bep1rit7nko1n" path="res://script/chapter1.gd" id="1_a7xca"]
+[ext_resource type="Script" uid="uid://bep1rit7nko1n" path="res://script/scene/chapter1.gd" id="1_a7xca"]
 [ext_resource type="Texture2D" uid="uid://b1snbyfyln1cx" path="res://sprites/intro/CooleAnimation.png" id="2_73gsc"]
 [ext_resource type="PackedScene" uid="uid://cblgthifee85" path="res://scenes/textbox.tscn" id="2_ixw26"]
 [ext_resource type="PackedScene" uid="uid://vgeye0x4a7o5" path="res://scenes/übergang.tscn" id="2_owq3m"]

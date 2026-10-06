@@ -2,7 +2,7 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://uwdkfw1i008k"
+uid="uid://ys0gr5yl0ufu"
 path="res://.godot/imported/Comicoro.ttf-4875189a375e4f4d788b9925a52598f9.fontdata"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Comicoro.ttf-4875189a375e4f4d788b9925a52598f9
 [params]
 
 Rendering=null
-antialiasing=0
+antialiasing=1
 generate_mipmaps=false
 disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false

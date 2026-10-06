@@ -1,9 +1,13 @@
 [gd_scene format=4 uid="uid://bntiryema3lq3"]
 
-[ext_resource type="Script" uid="uid://dv770gft0ml4w" path="res://script/chapter2.gd" id="1_fauhw"]
+[ext_resource type="Script" uid="uid://dv770gft0ml4w" path="res://script/scene/chapter2.gd" id="1_fauhw"]
 [ext_resource type="PackedScene" uid="uid://cblgthifee85" path="res://scenes/textbox.tscn" id="1_qnt0b"]
 [ext_resource type="PackedScene" uid="uid://dfqnctduyethf" path="res://scenes/player.tscn" id="2_csaf5"]
 [ext_resource type="TileSet" uid="uid://kkl6buhyq18q" path="res://resources/Tileset.tres" id="2_fauhw"]
+[ext_resource type="PackedScene" uid="uid://vgeye0x4a7o5" path="res://scenes/übergang.tscn" id="3_xyq0r"]
+[ext_resource type="Texture2D" uid="uid://cfq2kd36b1loj" path="res://sprites/Fight/Spookyman.png" id="4_l0aug"]
+[ext_resource type="PackedScene" uid="uid://c3iwsec3ukvdu" path="res://scenes/fight.tscn" id="4_nc5vj"]
+[ext_resource type="Texture2D" uid="uid://5667gxtu12cf" path="res://sprites/Chapter1/Black.png" id="5_e62tl"]
 [ext_resource type="Texture2D" uid="uid://ce7byf1yqu7xv" path="res://sprites/Chapter1/BösiSteini.png" id="5_enpjh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwks1"]
@@ -26,6 +30,25 @@ script = ExtResource("1_fauhw")
 
 [node name="Textbox" parent="UI" unique_id=1511982094 node_paths=PackedStringArray("player") instance=ExtResource("1_qnt0b")]
 player = NodePath("../../Objects/Player")
+
+[node name="Übergang" parent="UI" unique_id=1732988919 instance=ExtResource("3_xyq0r")]
+scale = Vector2(12, 12)
+transform = Transform2D(12, 0, 0, 12, 0, 0)
+
+[node name="Fight" parent="UI" unique_id=1902850465 instance=ExtResource("4_nc5vj")]
+visible = false
+
+[node name="Black" type="Sprite2D" parent="UI" unique_id=1453480065]
+visible = false
+scale = Vector2(1920, 1080)
+texture = ExtResource("5_e62tl")
+centered = false
+
+[node name="Spookyman" type="Sprite2D" parent="UI" unique_id=1592147902]
+position = Vector2(1920, 0)
+scale = Vector2(12, 12)
+texture = ExtResource("4_l0aug")
+centered = false
 
 [node name="Map" type="Node2D" parent="." unique_id=381481472]
 

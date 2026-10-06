@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dfqnctduyethf"]
 
 [ext_resource type="Texture2D" uid="uid://bpsx3muaccdbg" path="res://sprites/Sohnemann.png" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://c2jwo34ggseme" path="res://script/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://c2jwo34ggseme" path="res://script/utility/player.gd" id="1_g2els"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")

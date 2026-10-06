@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cblgthifee85"]
 
 [ext_resource type="Texture2D" uid="uid://c5or2b1n78r4b" path="res://sprites/Textbox.png" id="1_g5d5p"]
-[ext_resource type="Script" uid="uid://bmxy6ks2pp72t" path="res://script/textbox.gd" id="1_qagdh"]
+[ext_resource type="Script" uid="uid://bmxy6ks2pp72t" path="res://script/utility/textbox.gd" id="1_qagdh"]
 [ext_resource type="FontFile" uid="uid://uwdkfw1i008k" path="res://sprites/Comicoro.ttf" id="2_qagdh"]
 [ext_resource type="Texture2D" uid="uid://de2o88iac3no2" path="res://sprites/Textboxbuffer.png" id="3_c4wvf"]
 

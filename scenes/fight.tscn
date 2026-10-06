@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://c3iwsec3ukvdu"]
+
+[ext_resource type="Script" uid="uid://df2c2f7qmwthy" path="res://script/utility/fight.gd" id="1_htrw1"]
+[ext_resource type="FontFile" uid="uid://ys0gr5yl0ufu" path="res://sprites/Comicoro.ttf" id="5_57w1i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_537il"]
+line_spacing = -32.0
+font = ExtResource("5_57w1i")
+font_size = 132
+font_color = Color(0, 0.6862745, 0, 1)
+
+[node name="Fight" type="CanvasLayer" unique_id=1902850465]
+script = ExtResource("1_htrw1")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=916690113]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1298.25
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1016078242]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -622.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 10
+
+[node name="Text" type="Label" parent="MarginContainer" unique_id=1179735680]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+size_flags_vertical = 1
+text = "Klaus:  100%
+Enemy: 50%
+
+$ |Actions
+  |Specials
+  |Items
+"
+label_settings = SubResource("LabelSettings_537il")
+autowrap_trim_flags = 0
