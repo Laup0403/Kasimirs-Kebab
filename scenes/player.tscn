@@ -138,8 +138,7 @@ script = ExtResource("1_g2els")
 [node name="Spiti" type="AnimatedSprite2D" parent="." unique_id=1752402365]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_gwks1")
-animation = &"IdleDown"
-frame_progress = 0.26022923
+animation = &"WalkDown"
 centered = false
 offset = Vector2(-8, -31)
 

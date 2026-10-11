@@ -6,6 +6,7 @@ extends CharacterBody2D
 const moveSpeed = 50.0
 var dir = 'd'
 var canMove = true
+var isMoving = false
 
 func _physics_process(delta: float) -> void:
 	if !Utils.input: return
@@ -13,7 +14,20 @@ func _physics_process(delta: float) -> void:
 	var input = Vector2.ZERO
 	
 	# Extrem langes if statement das irgendwie funktioniert aber weiß nicht wie :) is aber egal
-	if canMove:
+	if isMoving:
+		if dir == 'u':
+			anim.play("WalkUp")
+			anim.flip_h = false
+		elif dir == 'd':
+			anim.play("WalkDown")
+			anim.flip_h = false
+		elif dir == 'l':
+			anim.play("WalkSide")
+			anim.flip_h = true
+		elif dir == 'r':
+			anim.play("WalkSide")
+			anim.flip_h = false
+	elif canMove:
 		if Input.is_action_pressed("Up"):
 			input.y -= 1
 			dir = 'u'
