@@ -5,9 +5,9 @@ extends Node2D
 @onready var übergang = $"UI/Übergang"
 
 var area = "none"
-var msmauer = 5
+var msmauer = 0
 var angry = 0
-var fightState = 3
+var fightState = 0
 var timer = 0
 var beamState = 0
 
