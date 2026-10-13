@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byh6bmleprd5j"
-path="res://.godot/imported/CoolAnimation.png-a68361369a0b6305eea6088c4ccc5968.ctex"
+uid="uid://dqf13jhyniv71"
+path="res://.godot/imported/CoolAnimation.png-66fa6a636aabfa00afe22466ff95f89b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Fight/CoolAnimation.png"
-dest_files=["res://.godot/imported/CoolAnimation.png-a68361369a0b6305eea6088c4ccc5968.ctex"]
+source_file="res://sprites/CoolAnimation.png"
+dest_files=["res://.godot/imported/CoolAnimation.png-66fa6a636aabfa00afe22466ff95f89b.ctex"]
 
 [params]
 

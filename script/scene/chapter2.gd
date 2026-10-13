@@ -7,7 +7,7 @@ extends Node2D
 var area = "none"
 var msmauer = 0
 var angry = 0
-var fightState = 0
+var fightState = 5
 var timer = 0
 var beamState = 0
 
@@ -75,6 +75,14 @@ func _process(delta: float) -> void:
 				textbox.addText("Ms. Mauer", "What?")
 	else:
 		$Objects/Player/Camera2D.zoom = Vector2(12.0,12.0)
+	
+	if area == "ausgang":
+		#get_tree().change_scene_to_file("res://scenes/chapter3.tscn")
+		var newRes = load("res://scenes/chapter3.tscn")
+		var new = newRes.instantiate()
+		new.oldX = player.position.x
+		get_tree().root.add_child(new)
+		queue_free()
 	
 	if fightState != 0: fightProcess(delta)
 
@@ -187,3 +195,7 @@ func _on_exit_entered(body: Node2D) -> void:
 func _hans_entered(body: Node2D) -> void:
 	if body == player:
 		area = "hans"
+func _ausgang_entered(body: Node2D) -> void:
+	if body == player:
+		area = "ausgang"
+		print("ausgang")

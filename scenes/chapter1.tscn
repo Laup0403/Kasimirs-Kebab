@@ -359,6 +359,7 @@ position = Vector2(143, -229)
 shape = SubResource("RectangleShape2D_4cgtp")
 
 [node name="Objects" type="Node2D" parent="." unique_id=1400965513]
+z_index = 1
 y_sort_enabled = true
 
 [node name="Player" parent="Objects" unique_id=2062820343 instance=ExtResource("4_b1q2x")]
@@ -432,13 +433,15 @@ enabled = false
 zoom = Vector2(12, 12)
 
 [node name="TuffHus" type="StaticBody2D" parent="Objects" unique_id=1262560680]
-position = Vector2(365, 22)
+position = Vector2(365, 52)
 
 [node name="Sprite2D" type="Sprite2D" parent="Objects/TuffHus" unique_id=1245266621]
 texture = ExtResource("13_o828x")
+centered = false
+offset = Vector2(-32, -64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/TuffHus" unique_id=639118263]
-position = Vector2(0, 20)
+position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_gwwod")
 
 [connection signal="body_entered" from="Map/PreMonster" to="." method="_pre_monster_entered"]

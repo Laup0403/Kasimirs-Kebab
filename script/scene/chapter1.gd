@@ -98,9 +98,12 @@ func _process(delta: float) -> void:
 	
 	## Exit ##
 	elif exit or (area == "exit" and Input.is_action_just_pressed("Action1") and textbox.state == "ready"):
+		textbox.addText(
+			"Laupi",
+			"If you go this way, you\ncan't go back." )
 		textbox.addQuestion(
-			"Laupi", 
-			"You are going to enter the\nvalley. Are you sure?\n    Yes("+Utils.getKey("Action1")+") No("+Utils.getKey("Action2")+")",
+			"Laupi",
+			"Are you sure?\n    Yes("+Utils.getKey("Action1")+") No("+Utils.getKey("Action2")+")",
 			func(): übergang.outro(func(): get_tree().change_scene_to_file("res://scenes/chapter2.tscn")),
 			func(): return
 		)
