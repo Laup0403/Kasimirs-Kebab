@@ -108,7 +108,6 @@ func _process(delta: float) -> void:
 			func(): return
 		)
 		exit = false
-	
 	## Check Area ##
 	elif Input.is_action_just_pressed("Action1") and textbox.state == "ready":
 		if area == "hans" and player.dir == 'u':
@@ -118,10 +117,10 @@ func _process(delta: float) -> void:
 			elif hansstate == 1:
 				textbox.addText("Hans", "What are you waiting for?")
 			elif hansstate == 2:
-				textbox.addText("Klaus", "The kebab skewer was\nstolen by a bettle!")
-				textbox.addText("Hans", "Oh, no!\nWe're did that beetle go?")
+				textbox.addText("Klaus", "The kebab skewer was\nstolen by a cabbage!")
+				textbox.addText("Hans", "Oh, no!\nWe're did that cabbage go?")
 				textbox.addText("Klaus", "The Doner guy said\nhe went to the valley.")
-				textbox.addText("Hans", "We must find this beetle!\nLet's go after him!", func(): hansstate = 3)
+				textbox.addText("Hans", "We must find this cabbage!\nLet's go after him!", func(): hansstate = 3)
 		elif area == "döner" and player.dir == "u":
 			if !dönispoken :
 				textbox.addQuestion(
@@ -130,9 +129,9 @@ func _process(delta: float) -> void:
 				func():
 					hansstate = 2
 					dönispoken = true 
-					textbox.addText("Doner guy", "Sorry but my kebab skewer\nwas stolen by some beetle\nwith a red cape")
+					textbox.addText("Doner guy", "Sorry but my kebab skewer\nwas stolen by some cabbage\nwith a red cape")
 					textbox.addText("Doner guy", "Can you help me\nget it back, please?")
-					textbox.addText("Doner guy", "The beetle went towards \nthe valley."), 
+					textbox.addText("Doner guy", "The cabbage went towards \nthe valley."), 
 				func(): 
 					textbox.addText("Doner guy", "Ok")
 				)
