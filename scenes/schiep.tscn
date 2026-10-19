@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://o51p58lotoi8"]
+
+[ext_resource type="Texture2D" uid="uid://dsnwnkj34a3br" path="res://sprites/Stadt/Schiep.png" id="1_djf72"]
+[ext_resource type="Script" uid="uid://pssaggg215co" path="res://script/schiep.gd" id="1_p0xb1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xffvv"]
+atlas = ExtResource("1_djf72")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cpjg"]
+atlas = ExtResource("1_djf72")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j2mxd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xffvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cpjg")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfkh7"]
+size = Vector2(21, 5)
+
+[node name="Schiep" type="StaticBody2D" unique_id=1191209565]
+script = ExtResource("1_p0xb1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2058911363]
+sprite_frames = SubResource("SpriteFrames_j2mxd")
+frame_progress = 0.9105328
+centered = false
+offset = Vector2(-16, -32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1508210048]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_gfkh7")

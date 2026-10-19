@@ -7,7 +7,7 @@ extends Node2D
 var area = "none"
 var msmauer = 0
 var angry = 0
-var fightState = 5
+var fightState = 0
 var timer = 0
 var beamState = 0
 

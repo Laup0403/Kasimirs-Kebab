@@ -7,21 +7,35 @@ var intro = false
 var area = "none"
 var room = "none"
 var timer = 0
+var back = false
 var speaken = [false, false, false, false]
 
 func _ready() -> void:
+	
 	$Room/Player.canMove = false
 	player.dir = 'u'
-	if oldX != 0:
-		player.position.x = oldX + 432
-	textbox.addText("Klaus", "Oh shit the wall collapsed\nbehind me")
+	if not back:
+		if oldX != 0:
+			player.position.x = oldX + 432
+		textbox.addText("Klaus", "Oh shit the wall collapsed\nbehind me")
+	else:
+		speaken[0] = true
+		speaken[1] = true
+		speaken[2] = true
+		speaken[3] = true
+		$Objects/Gitter/CollisionShape2D.disabled = true
+		$Objects/Gitter/AnimatedSprite2D.frame = 5
+		if oldX != 0:
+			player.position = Vector2(oldX,-640.0)
 
 func _process(delta: float) -> void:
+	
 	var roomCam = $Room/Camera2D
 	var normCam = player.get_node("Camera2D")
 	var roomPlayer = $Room/Player
 	var wiseman = $Room/Wiseman
-
+	
+	## Intro
 	if not intro && player.position.y <= -200.0:
 		player.canMove = false
 		var camera = $Objects/Player/Camera2D
@@ -37,7 +51,8 @@ func _process(delta: float) -> void:
 				camera.zoom = Vector2(12.0, 12.0)
 				camera.position = Vector2(0.0, 0.0)
 				player.canMove = true
-
+	
+	## In den räumen
 	if roomCam.enabled:
 	
 		if room == "exit" && roomPlayer.dir == 'd':
@@ -71,6 +86,7 @@ func _process(delta: float) -> void:
 			roomPlayer.position = Vector2(616.0, -384.0)
 			wiseman.frame = area.to_int() - 1
 	
+	## Gatter öffnen ##
 	if speaken.all(func(v): return v) && not roomCam.enabled && not $Objects/Gitter/CollisionShape2D.disabled:
 		player.canMove = false
 		$Objects/Player/Camera2D.enabled = false
@@ -83,6 +99,14 @@ func _process(delta: float) -> void:
 			player.canMove = true
 			$Objects/Player/Camera2D.enabled = true
 			$FenceCamera.enabled = false
+	
+	## Scene switchen
+	if player.position.y <= -641.0:
+		var nextRes = load("res://scenes/chapter4.tscn")
+		var next = nextRes.instantiate()
+		next.spawn = Vector2(player.position.x,113.0)
+		get_tree().root.add_child(next)
+		queue_free()
 
 func _exited(body: Node2D) -> void:
 	if body == player: area = "none"
