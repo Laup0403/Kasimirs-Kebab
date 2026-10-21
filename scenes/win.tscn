@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://cl3adih5jt2ft"]
+
+[ext_resource type="Texture2D" uid="uid://5667gxtu12cf" path="res://sprites/Chapter1/Black.png" id="1_r4oei"]
+[ext_resource type="Script" uid="uid://bxc76vs6vblwj" path="res://script/scene/win.gd" id="1_yxbqr"]
+[ext_resource type="FontFile" uid="uid://ys0gr5yl0ufu" path="res://sprites/Comicoro.ttf" id="2_826fv"]
+[ext_resource type="Texture2D" uid="uid://di7yfqds3rlto" path="res://sprites/katzeCool.png" id="3_iiocm"]
+[ext_resource type="VideoStream" uid="uid://b2c5ebso6vikf" path="res://sprites/Moin31/poor-cute-cat.ogv" id="4_tylv2"]
+[ext_resource type="Texture2D" uid="uid://cckdqntbbcqhs" path="res://sprites/Moin31/BadKatze.png" id="5_531e2"]
+[ext_resource type="Texture2D" uid="uid://dhhtwvdtbrqok" path="res://sprites/Moin31/yellow.png" id="6_d70ak"]
+[ext_resource type="VideoStream" uid="uid://ujryvlmdojl1" path="res://sprites/Moin31/xrd-exrd.ogv" id="7_woh6y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iiocm"]
+line_spacing = -36.0
+font = ExtResource("2_826fv")
+font_size = 160
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yxbqr"]
+line_spacing = -36.0
+font = ExtResource("2_826fv")
+font_size = 48
+font_color = Color(0, 1, 0, 1)
+
+[node name="Win" type="Node2D" unique_id=450011514]
+script = ExtResource("1_yxbqr")
+
+[node name="GuteAngebot" type="Node2D" parent="." unique_id=1648141040]
+
+[node name="Sprite2D" type="Sprite2D" parent="GuteAngebot" unique_id=1481205311]
+scale = Vector2(1920, 1080)
+texture = ExtResource("1_r4oei")
+centered = false
+
+[node name="MarginContainer" type="MarginContainer" parent="GuteAngebot" unique_id=1035496867]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 247.0
+offset_top = 409.0
+offset_right = 1677.0
+offset_bottom = 673.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="GuteAngebot/MarginContainer" unique_id=9086886]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 10
+text = "You can see how the story ends
+for just 10.99$ (only paypal)"
+label_settings = SubResource("LabelSettings_iiocm")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="GuteAngebot" unique_id=1784586627]
+offset_left = 173.0
+offset_top = 48.0
+offset_right = 251.0
+offset_bottom = 188.0
+scale = Vector2(2.4, 2.4)
+stream = ExtResource("4_tylv2")
+autoplay = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="GuteAngebot" unique_id=1809314044]
+position = Vector2(1207.0001, 210)
+scale = Vector2(0.915, 0.915)
+texture = ExtResource("5_531e2")
+
+[node name="Sprite2D3" type="Sprite2D" parent="GuteAngebot" unique_id=1368702345]
+position = Vector2(1704, 910)
+rotation = 0.52376664
+scale = Vector2(1.109621, 1.1148994)
+texture = ExtResource("6_d70ak")
+
+[node name="Label" type="Label" parent="GuteAngebot" unique_id=587768453]
+offset_left = 1823.0
+offset_top = 2.0
+offset_right = 3253.0
+offset_bottom = 266.0
+size_flags_horizontal = 3
+size_flags_vertical = 10
+text = "*Joke"
+label_settings = SubResource("LabelSettings_yxbqr")
+
+[node name="VideoStreamPlayer2" type="VideoStreamPlayer" parent="GuteAngebot" unique_id=1370681779]
+offset_left = 138.0
+offset_top = 705.0
+offset_right = 358.0
+offset_bottom = 869.0
+scale = Vector2(1.995, 1.995)
+stream = ExtResource("7_woh6y")
+autoplay = true
+
+[node name="Danke oida" type="Node2D" parent="." unique_id=1819822771]
+
+[node name="Sprite2D" type="Sprite2D" parent="Danke oida" unique_id=1789838662]
+scale = Vector2(1920, 1080)
+texture = ExtResource("1_r4oei")
+centered = false
+
+[node name="MarginContainer" type="MarginContainer" parent="Danke oida" unique_id=1107282772]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 350.0
+offset_top = 874.0
+offset_right = 1570.0
+offset_bottom = 1024.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Danke oida/MarginContainer" unique_id=789862510]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 10
+text = "Thanks for playing oida!"
+label_settings = SubResource("LabelSettings_iiocm")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Danke oida" unique_id=1363191451]
+position = Vector2(960, 436)
+scale = Vector2(3, 3)
+texture = ExtResource("3_iiocm")

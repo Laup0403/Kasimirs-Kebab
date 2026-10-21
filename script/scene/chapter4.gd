@@ -23,8 +23,8 @@ func _process(delta: float) -> void:
 	
 	if area == "chillguy" and player.dir == 'u' and textbox.state == "ready" and Input.is_action_just_pressed("Action1"):
 		textbox.addText("Chillguy", "Yo, wassup?")
-		textbox.addText("Klaus", "I'm searching a castle,\nwhere some Kasimir lives in.\nDid you see one?")
-		textbox.addText("Chillguy", "Yeah it is in the north.")
+		textbox.addText("Klaus", "I'm searching a castle \nwhere some Kasimir lives in.\nDid you see one?")
+		textbox.addText("Chillguy", "Yeah, I think\n it is in the north.")
 		textbox.addText("Klaus", "Ok, thanks!")
 
 
@@ -37,4 +37,5 @@ func _chillguy(body: Node2D) -> void:
 func _exited(body: Node2D) -> void:
 	if body == player: area = "none"
 func _castle(body: Node2D) -> void:
-	if body == player: get_tree().change_scene_to_file("res://scenes/chapter1.tscn")
+	if body == player:
+		$"UI/Übergang".outro(func():get_tree().change_scene_to_file("res://scenes/chapter5.tscn"))
