@@ -6,7 +6,7 @@ static func getKey(Key):
 
 ## Disable Inputs ##
 var input = true
-var mobile = true
+var mobile = false
 
 func disableInput():
 	input = false
