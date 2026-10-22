@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://3g2onbd8nhgo" path="res://script/scene/chapter3.gd" id="1_bxcy2"]
 [ext_resource type="TileSet" uid="uid://kkl6buhyq18q" path="res://resources/Tileset.tres" id="2_cpqgf"]
 [ext_resource type="PackedScene" uid="uid://cblgthifee85" path="res://scenes/textbox.tscn" id="2_waonb"]
+[ext_resource type="PackedScene" uid="uid://cwa31u6k2xgtm" path="res://scenes/mobileControls.tscn" id="3_tmy5h"]
 [ext_resource type="PackedScene" uid="uid://dfqnctduyethf" path="res://scenes/player.tscn" id="3_waonb"]
 [ext_resource type="Texture2D" uid="uid://bu5vuhj2g663i" path="res://sprites/Stadt/Gitter.png" id="5_jjavj"]
 [ext_resource type="Texture2D" uid="uid://rq3l36807ef6" path="res://sprites/Stadt/Onkel.png" id="5_waonb"]
@@ -123,6 +124,10 @@ script = ExtResource("1_bxcy2")
 [node name="Textbox" parent="UI" unique_id=1511982094 node_paths=PackedStringArray("player") instance=ExtResource("2_waonb")]
 player = NodePath("../../Objects/Player")
 
+[node name="MobileControls" parent="UI" unique_id=814634749 node_paths=PackedStringArray("textbox", "chapter") instance=ExtResource("3_tmy5h")]
+textbox = NodePath("../Textbox")
+chapter = NodePath("../..")
+
 [node name="Map" type="Node2D" parent="." unique_id=974896770]
 
 [node name="Ground" type="TileMapLayer" parent="Map" unique_id=2040543553]
@@ -234,7 +239,6 @@ shape = SubResource("RectangleShape2D_vep1d")
 y_sort_enabled = true
 
 [node name="Player" parent="Objects" unique_id=2062820343 instance=ExtResource("3_waonb")]
-position = Vector2(0, -593)
 
 [node name="Camera2D" type="Camera2D" parent="Objects/Player" unique_id=1597235885]
 offset = Vector2(0, -16)

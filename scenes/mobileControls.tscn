@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://cwa31u6k2xgtm"]
+
+[ext_resource type="Script" uid="uid://b63ljme05ygxr" path="res://script/utility/mobile_controls.gd" id="1_hfldq"]
+[ext_resource type="Texture2D" uid="uid://bvokflnpfytik" path="res://sprites/Keys/Arrow.png" id="1_uoqj0"]
+[ext_resource type="Texture2D" uid="uid://d3jbhct0ru3g3" path="res://sprites/Keys/Action1.png" id="2_3u0vd"]
+[ext_resource type="Texture2D" uid="uid://c4fb6sdnf3hx0" path="res://sprites/Keys/Yes.png" id="3_l4mix"]
+[ext_resource type="Texture2D" uid="uid://d2gu7dygdwbf8" path="res://sprites/Keys/No.png" id="4_hfldq"]
+[ext_resource type="Texture2D" uid="uid://bamk3nfoihpm1" path="res://sprites/Keys/Textbox.png" id="6_4pcru"]
+
+[node name="MobileControls" type="CanvasLayer" unique_id=814634749]
+layer = 10
+scale = Vector2(20, 20)
+transform = Transform2D(20, 0, 0, 20, 0, 0)
+script = ExtResource("1_hfldq")
+
+[node name="Arrows" type="Node2D" parent="." unique_id=1148915756]
+
+[node name="Up" type="TouchScreenButton" parent="Arrows" unique_id=1890015910]
+position = Vector2(13, 33)
+texture_normal = ExtResource("1_uoqj0")
+action = "Up"
+
+[node name="Down" type="TouchScreenButton" parent="Arrows" unique_id=1251240880]
+position = Vector2(21, 50)
+rotation = -3.1415925
+texture_normal = ExtResource("1_uoqj0")
+action = "Down"
+
+[node name="Left" type="TouchScreenButton" parent="Arrows" unique_id=1503375862]
+position = Vector2(4, 50)
+rotation = -1.5707964
+texture_normal = ExtResource("1_uoqj0")
+action = "Left"
+
+[node name="Right" type="TouchScreenButton" parent="Arrows" unique_id=1050126496]
+position = Vector2(30, 42)
+rotation = 1.5707964
+texture_normal = ExtResource("1_uoqj0")
+action = "Right"
+
+[node name="Action1" type="TouchScreenButton" parent="Arrows" unique_id=411626317]
+position = Vector2(81, 39)
+texture_normal = ExtResource("2_3u0vd")
+action = "Action1"
+
+[node name="Question" type="Node2D" parent="." unique_id=137176780]
+
+[node name="Yes" type="TouchScreenButton" parent="Question" unique_id=1697940852]
+position = Vector2(81, 34)
+texture_normal = ExtResource("3_l4mix")
+action = "Action1"
+
+[node name="No" type="TouchScreenButton" parent="Question" unique_id=276782939]
+position = Vector2(81, 43)
+texture_normal = ExtResource("4_hfldq")
+action = "Action2"
+
+[node name="Textbox" type="Node2D" parent="." unique_id=1028768859]
+
+[node name="Action1" type="TouchScreenButton" parent="Textbox" unique_id=717122689]
+scale = Vector2(96, 54)
+texture_normal = ExtResource("6_4pcru")
+action = "Action1"

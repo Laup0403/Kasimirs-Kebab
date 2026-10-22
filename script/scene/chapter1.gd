@@ -12,6 +12,7 @@ var coolAnimation = 0
 var preMonster = false
 var monster = false
 var exit = false
+var intro = false
 
 func _ready() -> void:
 	übergang.intro()
@@ -70,17 +71,27 @@ func _process(delta: float) -> void:
 		else:
 			hansstate = 7
 	elif hansstate == 7:
-		var camera = $Objects/IntroCamera
-		camera.enabled = true
-		player.get_node("Camera2D").enabled = false
-		$Map/Waterfall.play("default")
-		if camera.position.y != -806.0:
-			camera.position.y -= 1
-		elif Input.is_anything_pressed():
-			player.canMove = true
-			camera.enabled = false
-			player.get_node("Camera2D").enabled = true
-			hansstate = 8
+		hans.visible = false
+		if intro == true:
+			var camera = $Objects/Player/Camera2D
+			$Map/Waterfall.play("default")
+			if camera.global_position.y > -790.0:
+				camera.global_position.y -= 1
+			elif camera.global_position.y != -790.0:
+				camera.global_position.y = -790.0
+			elif Input.is_anything_pressed():
+				player.canMove = true
+				camera.enabled = false
+				player.get_node("Camera2D").enabled = true
+				hansstate = 8
+				camera.position = Vector2(0.0,0.0)
+		else:
+			var camera = $Objects/Player/Camera2D
+			if camera.global_position.y >= -312.0:
+				camera.position.y -= 1
+			else:
+				camera.global_position.x = 788.0
+				intro = true 
 	
 	## Monster ##
 	elif preMonster:
@@ -129,7 +140,7 @@ func _process(delta: float) -> void:
 				func():
 					hansstate = 2
 					dönispoken = true 
-					textbox.addText("Doner guy", "Sorry but my kebab skewer\nwas stolen by some cabbage\nwith a red cape")
+					textbox.addText("Doner guy", "Sorry but my kebab skewer\nwas stolen by some\ncabbage.")
 					textbox.addText("Doner guy", "Can you help me\nget it back, please?")
 					textbox.addText("Doner guy", "The cabbage went towards \nthe valley."), 
 				func(): 

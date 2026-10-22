@@ -2,8 +2,10 @@ extends Node2D
 
 @onready var player = $Objects/Player
 @onready var textbox = $UI/Textbox
+@onready var roomCam = $Room/Camera2D
 var oldX = 0
 var intro = false
+var introplaying = false
 var area = "none"
 var room = "none"
 var timer = 0
@@ -29,14 +31,13 @@ func _ready() -> void:
 			player.position = Vector2(oldX,-640.0)
 
 func _process(delta: float) -> void:
-	
-	var roomCam = $Room/Camera2D
 	var normCam = player.get_node("Camera2D")
 	var roomPlayer = $Room/Player
 	var wiseman = $Room/Wiseman
 	
 	## Intro
 	if not intro && player.position.y <= -200.0:
+		introplaying = true
 		player.canMove = false
 		var camera = $Objects/Player/Camera2D
 		if camera.global_position.x != 0:
@@ -47,6 +48,7 @@ func _process(delta: float) -> void:
 			camera.position.y -= 1
 		else:
 			if Input.is_anything_pressed():
+				introplaying = false
 				intro = true
 				camera.zoom = Vector2(12.0, 12.0)
 				camera.position = Vector2(0.0, 0.0)

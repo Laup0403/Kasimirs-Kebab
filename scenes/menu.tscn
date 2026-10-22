@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dd1uq7flwumiu" path="res://sprites/Menu/TitelBild.png" id="1_yqeox"]
 [ext_resource type="PackedScene" uid="uid://vgeye0x4a7o5" path="res://scenes/übergang.tscn" id="2_13sgg"]
 [ext_resource type="Texture2D" uid="uid://c8wmlhnul1iy7" path="res://sprites/Menu/button.png" id="2_vjb58"]
-[ext_resource type="FontFile" uid="uid://uwdkfw1i008k" path="res://sprites/Comicoro.ttf" id="3_con2f"]
+[ext_resource type="FontFile" uid="uid://ys0gr5yl0ufu" path="res://sprites/Comicoro.ttf" id="3_con2f"]
 [ext_resource type="Texture2D" uid="uid://cythuqpt7w3in" path="res://sprites/Menu/exit.png" id="5_4ytvr"]
 [ext_resource type="Texture2D" uid="uid://lyt0vyv5teqh" path="res://sprites/Menu/Settings.png" id="6_v86rl"]
 [ext_resource type="Texture2D" uid="uid://bfx8aqnh6mprc" path="res://sprites/Menu/settingsbutton.png" id="7_13sgg"]

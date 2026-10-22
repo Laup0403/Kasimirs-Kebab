@@ -109,6 +109,24 @@ func _process(delta: float) -> void:
 
 ## I HATE INPUTS ##
 func _input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch and event.pressed:
+		var space_state = get_world_2d().direct_space_state
+
+		var query = PhysicsPointQueryParameters2D.new()
+		query.position = event.position
+		query.collide_with_areas = true
+		query.collide_with_bodies = false
+
+		var results = space_state.intersect_point(query)
+
+		for result in results:
+			var area = result.collider as Area2D
+
+			if area:
+				var button = area.get_parent()
+				mouse = button.name
+				break
+	
 	if recording != "nothing" && state == "Settings":
 		if event is InputEventKey and event.is_pressed() and not event.is_echo():
 			InputMap.action_erase_events(recording)

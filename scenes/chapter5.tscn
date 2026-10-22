@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bu5vuhj2g663i" path="res://sprites/Stadt/Gitter.png" id="2_msq8d"]
 [ext_resource type="PackedScene" uid="uid://vgeye0x4a7o5" path="res://scenes/übergang.tscn" id="2_ub6gl"]
 [ext_resource type="PackedScene" uid="uid://cblgthifee85" path="res://scenes/textbox.tscn" id="3_h3v6u"]
+[ext_resource type="PackedScene" uid="uid://cwa31u6k2xgtm" path="res://scenes/mobileControls.tscn" id="4_8prf0"]
 [ext_resource type="Texture2D" uid="uid://5667gxtu12cf" path="res://sprites/Chapter1/Black.png" id="4_n8wyu"]
 [ext_resource type="Texture2D" uid="uid://c153i5sge8sy1" path="res://sprites/Stadt/cabbage.png" id="7_4frf5"]
 [ext_resource type="Texture2D" uid="uid://fi7qn4mklsls" path="res://sprites/puzzle/Döner.png" id="8_4frf5"]
@@ -101,6 +102,10 @@ transform = Transform2D(12, 0, 0, 12, 0, 0)
 
 [node name="Textbox" parent="UI" unique_id=1511982094 node_paths=PackedStringArray("player") instance=ExtResource("3_h3v6u")]
 player = NodePath("../../Player")
+
+[node name="MobileControls" parent="UI" unique_id=814634749 node_paths=PackedStringArray("textbox", "chapter") instance=ExtResource("4_8prf0")]
+textbox = NodePath("../Textbox")
+chapter = NodePath("../..")
 
 [node name="black" type="Sprite2D" parent="UI" unique_id=40748370]
 visible = false

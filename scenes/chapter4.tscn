@@ -5,6 +5,7 @@
 [ext_resource type="TileSet" uid="uid://kkl6buhyq18q" path="res://resources/Tileset.tres" id="2_ra2r0"]
 [ext_resource type="PackedScene" uid="uid://vgeye0x4a7o5" path="res://scenes/übergang.tscn" id="2_xffvv"]
 [ext_resource type="PackedScene" uid="uid://dfqnctduyethf" path="res://scenes/player.tscn" id="3_eb37g"]
+[ext_resource type="PackedScene" uid="uid://cwa31u6k2xgtm" path="res://scenes/mobileControls.tscn" id="4_qb33u"]
 [ext_resource type="Texture2D" uid="uid://bhysxu8gtq53c" path="res://sprites/Stadt/Decke.png" id="4_sqes0"]
 [ext_resource type="Texture2D" uid="uid://cbigfwue8jtqg" path="res://sprites/Stadt/Basket.png" id="5_btt7u"]
 [ext_resource type="Texture2D" uid="uid://bmispctrf4tbn" path="res://sprites/Stadt/Chillguy.png" id="7_xffvv"]
@@ -104,6 +105,10 @@ transform = Transform2D(12, 0, 0, 12, 0, 0)
 
 [node name="Textbox" parent="UI" unique_id=1511982094 node_paths=PackedStringArray("player") instance=ExtResource("1_ucq02")]
 player = NodePath("../../Objects/Player")
+
+[node name="MobileControls" parent="UI" unique_id=814634749 node_paths=PackedStringArray("textbox", "chapter") instance=ExtResource("4_qb33u")]
+textbox = NodePath("../Textbox")
+chapter = NodePath("../..")
 
 [node name="Map" type="Node2D" parent="." unique_id=308148787]
 
