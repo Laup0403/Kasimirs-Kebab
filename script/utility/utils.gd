@@ -1,4 +1,20 @@
 extends Node
+var übergang: AudioStreamPlayer
+var mainmenutheme: AudioStreamPlayer
+var piepmatz: AudioStreamPlayer
+
+func _ready() -> void:
+	übergang = AudioStreamPlayer.new()
+	add_child(übergang)
+	übergang.stream = load("res://audio/übergang.ogg")
+	
+	mainmenutheme = AudioStreamPlayer.new()
+	add_child(mainmenutheme)
+	mainmenutheme.stream = load("res://audio/hans.ogg")
+	
+	piepmatz = AudioStreamPlayer.new()
+	add_child(piepmatz)
+	piepmatz.stream = load("res://audio/piepmatz.mp3")
 
 ## Get Key ##
 static func getKey(Key):

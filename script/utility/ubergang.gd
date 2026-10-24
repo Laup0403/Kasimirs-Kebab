@@ -10,6 +10,7 @@ func outro(afterCall: Callable = Callable()):
 	Utils.disableInput()
 	übergang.visible = true
 	übergang.play("default")
+	Utils.übergang.playing = true
 	await übergang.animation_finished
 	übergang.visible = false
 	if afterCall: afterCall.call()

@@ -13,15 +13,20 @@ func _process(delta: float) -> void:
 	## Movement
 	
 	if Input.is_action_just_pressed("Up"):
+		$Drop.play()
 		movePlayer(0,-8)
 	elif Input.is_action_just_pressed("Down"):
 		movePlayer(0,8)
+		$Drop.play()
 	elif Input.is_action_just_pressed("Left"):
 		movePlayer(-8,0)
+		$Drop.play()
 	elif Input.is_action_just_pressed("Right"):
 		movePlayer(8,0)
+		$Drop.play()
 	elif Input.is_action_just_pressed("Action1") or Input.is_action_just_pressed("Action2"):
 		get_tree().reload_current_scene()
+		$Drop.play()
 		return
 
 func movePlayer(x,y):

@@ -13,10 +13,12 @@ var back = false
 var speaken = [false, false, false, false]
 
 func _ready() -> void:
+	if not Utils.piepmatz.playing: Utils.piepmatz.playing = true
 	
 	$Room/Player.canMove = false
 	player.dir = 'u'
 	if not back:
+		$Map/Stein.play()
 		if oldX != 0:
 			player.position.x = oldX + 432
 		textbox.addText("Klaus", "Oh shit the wall collapsed\nbehind me")
@@ -56,7 +58,9 @@ func _process(delta: float) -> void:
 	
 	## In den räumen
 	if roomCam.enabled:
-	
+		if not $"Map/DönermanTheme".playing:
+			Utils.piepmatz.stop()
+			$"Map/DönermanTheme".playing = true
 		if room == "exit" && roomPlayer.dir == 'd':
 			roomCam.enabled = false
 			normCam.enabled = true
@@ -64,6 +68,8 @@ func _process(delta: float) -> void:
 			roomPlayer.canMove = false
 			player.dir = 'd'
 			room = "none"
+			$"Map/DönermanTheme".stop()
+			Utils.piepmatz.playing = true
 
 		# B) Mit Wiseman reden
 		elif room == "man" && roomPlayer.dir == 'u' && Input.is_action_just_pressed("Action1") && textbox.state == "ready":

@@ -9,13 +9,17 @@
 [ext_resource type="PackedScene" uid="uid://dfqnctduyethf" path="res://scenes/player.tscn" id="4_b1q2x"]
 [ext_resource type="Texture2D" uid="uid://cgmbi1r7wbdo0" path="res://sprites/intro/logo/Background.png" id="5_b1q2x"]
 [ext_resource type="Texture2D" uid="uid://bxwm7neg0yfmj" path="res://sprites/intro/HansBack.png" id="5_o828x"]
+[ext_resource type="AudioStream" uid="uid://balxbn33brfk6" path="res://audio/spookyman.ogg" id="5_yt43p"]
 [ext_resource type="Texture2D" uid="uid://djoutrg160pb6" path="res://sprites/intro/HansMitHut.png" id="6_2ujgs"]
 [ext_resource type="Texture2D" uid="uid://cagux7gw7srbh" path="res://sprites/intro/logo/Waterfall.png" id="6_o828x"]
 [ext_resource type="PackedScene" uid="uid://cwa31u6k2xgtm" path="res://scenes/mobileControls.tscn" id="6_r7ryb"]
 [ext_resource type="Texture2D" uid="uid://ccesgdu3hhmfb" path="res://sprites/intro/HansMitHubschrauber.png" id="7_owq3m"]
 [ext_resource type="Texture2D" uid="uid://b8vejxycyu3y" path="res://sprites/intro/DönermannOhneFlei.png" id="8_r7ryb"]
 [ext_resource type="Texture2D" uid="uid://x3vvt07b5cmk" path="res://sprites/intro/Shield.png" id="9_3l2tw"]
+[ext_resource type="AudioStream" uid="uid://gadn2vxi4iyh" path="res://audio/fart.mp3" id="11_dywwg"]
 [ext_resource type="Texture2D" uid="uid://b400wk84rhknt" path="res://sprites/intro/TuffHus.png" id="13_o828x"]
+[ext_resource type="AudioStream" uid="uid://bpbwlinhkdn2u" path="res://audio/hans.ogg" id="14_ycfrv"]
+[ext_resource type="AudioStream" uid="uid://c7kfy8xtvmr6v" path="res://audio/DönermanTheme.ogg" id="15_3l2tw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ixw26"]
 atlas = ExtResource("2_73gsc")
@@ -296,6 +300,9 @@ scale = Vector2(24, 24)
 texture = ExtResource("3_2ujgs")
 centered = false
 
+[node name="Spookyman" type="AudioStreamPlayer" parent="UI/Monster" unique_id=1936185671]
+stream = ExtResource("5_yt43p")
+
 [node name="Textbox" parent="." unique_id=1511982094 node_paths=PackedStringArray("player") instance=ExtResource("2_ixw26")]
 player = NodePath("../Objects/Player")
 
@@ -363,6 +370,9 @@ position = Vector2(0, 1)
 position = Vector2(143, -229)
 shape = SubResource("RectangleShape2D_4cgtp")
 
+[node name="Fart" type="AudioStreamPlayer" parent="Map" unique_id=1712143506]
+stream = ExtResource("11_dywwg")
+
 [node name="Objects" type="Node2D" parent="." unique_id=1400965513]
 z_index = 1
 y_sort_enabled = true
@@ -397,6 +407,9 @@ position = Vector2(-4.5, -24.5)
 shape = SubResource("RectangleShape2D_ixw26")
 disabled = true
 
+[node name="Hans" type="AudioStreamPlayer" parent="Objects/Hans" unique_id=376066510]
+stream = ExtResource("14_ycfrv")
+
 [node name="Döni" type="StaticBody2D" parent="Objects" unique_id=754696001]
 position = Vector2(944, 40)
 
@@ -412,6 +425,9 @@ shape = SubResource("RectangleShape2D_j2mxd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Döni/Area" unique_id=886063540]
 position = Vector2(4, 32)
 shape = SubResource("RectangleShape2D_2lhwk")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Objects/Döni" unique_id=793897408]
+stream = ExtResource("15_3l2tw")
 
 [node name="Sign" type="StaticBody2D" parent="Objects" unique_id=1008526216]
 position = Vector2(590, 73)

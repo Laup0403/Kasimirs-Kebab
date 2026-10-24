@@ -8,14 +8,17 @@
 [ext_resource type="PackedScene" uid="uid://cwa31u6k2xgtm" path="res://scenes/mobileControls.tscn" id="4_7f4kk"]
 [ext_resource type="Texture2D" uid="uid://5667gxtu12cf" path="res://sprites/Chapter1/Black.png" id="5_e62tl"]
 [ext_resource type="Texture2D" uid="uid://ce7byf1yqu7xv" path="res://sprites/Chapter1/BösiSteini.png" id="5_enpjh"]
+[ext_resource type="Texture2D" uid="uid://dg3quxvh1copi" path="res://sprites/Chapter1/Spookyman.png" id="6_48stv"]
 [ext_resource type="Texture2D" uid="uid://kvanxm7ijfdi" path="res://sprites/Chapter1/DingsBums.png" id="6_arbkd"]
+[ext_resource type="AudioStream" uid="uid://balxbn33brfk6" path="res://audio/spookyman.ogg" id="7_liqu8"]
+[ext_resource type="AudioStream" uid="uid://dok6b54cqsq07" path="res://audio/MsMauer.ogg" id="8_kfkfa"]
 [ext_resource type="Texture2D" uid="uid://bxwm7neg0yfmj" path="res://sprites/intro/HansBack.png" id="9_l36sk"]
 [ext_resource type="Texture2D" uid="uid://djoutrg160pb6" path="res://sprites/intro/HansMitHut.png" id="9_nc5vj"]
 [ext_resource type="Texture2D" uid="uid://ccesgdu3hhmfb" path="res://sprites/intro/HansMitHubschrauber.png" id="11_arbkd"]
+[ext_resource type="AudioStream" uid="uid://cil4bbwjbgfm1" path="res://audio/stein.ogg" id="12_x5b35"]
+[ext_resource type="AudioStream" uid="uid://cu646v4hi3pcf" path="res://audio/beam.ogg" id="15_gnl33"]
 [ext_resource type="Texture2D" uid="uid://l8tjxlcwhx40" path="res://sprites/Chapter1/Beam.png" id="15_kfkfa"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_arbkd"]
-load_path = "res://.godot/imported/Spookyman.png-0a8e35716451c1bf6db573e2304ee1c8.ctex"
+[ext_resource type="AudioStream" uid="uid://bpbwlinhkdn2u" path="res://audio/hans.ogg" id="17_6tena"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwks1"]
 size = Vector2(20, 72)
@@ -140,14 +143,20 @@ centered = false
 [node name="Spookyman" type="Sprite2D" parent="UI" unique_id=1592147902]
 position = Vector2(1920, 0)
 scale = Vector2(12, 12)
-texture = SubResource("CompressedTexture2D_arbkd")
+texture = ExtResource("6_48stv")
 centered = false
+
+[node name="Spookyman" type="AudioStreamPlayer" parent="UI/Spookyman" unique_id=1758570731]
+stream = ExtResource("7_liqu8")
 
 [node name="DingsBums" type="Sprite2D" parent="UI" unique_id=357259728]
 visible = false
 position = Vector2(960, 340)
 scale = Vector2(24, 24)
 texture = ExtResource("6_arbkd")
+
+[node name="MsMauer" type="AudioStreamPlayer2D" parent="." unique_id=1098645582]
+stream = ExtResource("8_kfkfa")
 
 [node name="Map" type="Node2D" parent="." unique_id=381481472]
 
@@ -235,6 +244,9 @@ texture = ExtResource("5_enpjh")
 centered = false
 offset = Vector2(-16, -31)
 
+[node name="Stein" type="AudioStreamPlayer" parent="Objects/Player/SüßliSteinli" unique_id=1932247745]
+stream = ExtResource("12_x5b35")
+
 [node name="Hans" type="StaticBody2D" parent="Objects" unique_id=1501625823]
 position = Vector2(-418, -695)
 
@@ -254,6 +266,9 @@ offset = Vector2(-8, -48)
 position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_48stv")
 
+[node name="Hans" type="AudioStreamPlayer" parent="Objects/Hans" unique_id=699723059]
+stream = ExtResource("17_6tena")
+
 [node name="EpicCamera" type="Camera2D" parent="Objects" unique_id=1017012367]
 position = Vector2(-454, -227)
 enabled = false
@@ -266,6 +281,9 @@ position = Vector2(-418, -101.309)
 rotation = 1.5707964
 scale = Vector2(0.031797446, 0.06490869)
 texture = ExtResource("15_kfkfa")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Objects/Beam" unique_id=1752864801]
+stream = ExtResource("15_gnl33")
 
 [connection signal="body_entered" from="Map/KeinAusgang" to="." method="_on_exit_entered"]
 [connection signal="body_entered" from="Map/MsMauer" to="." method="_ms_mauer_entered"]

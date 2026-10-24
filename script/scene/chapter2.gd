@@ -10,8 +10,10 @@ var angry = 0
 var fightState = 0
 var timer = 0
 var beamState = 0
+var stein = false
 
 func _ready() -> void:
+	if not Utils.piepmatz.playing: Utils.piepmatz.playing = true
 	übergang.intro()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,26 +33,30 @@ func _process(delta: float) -> void:
 			elif camera.position.y + player.global_position.y > -282.0:
 				camera.position.y -= 1.0
 			else:
+				$MsMauer.playing = true
 				msmauer = 1
 				textbox.addQuestion("Ms. Mauer", "Do you wan't to enter\nthe valley?\n    Yes("+Utils.getKey("Action1")+") No("+Utils.getKey("Action2")+")",
 					func():
 						textbox.addText("Ms. Mauer", "It's not easy in there, yk?")
-						textbox.addText("Ms. Mauer", "If you want to get in...\nTHEN SHOW ME YOUR\nSKILLS!", func(): fightState = 1),
+						textbox.addText("Ms. Mauer", "If you want to get in...\nTHEN SHOW ME YOUR\nSKILLS!", func(): fightState = 1; $MsMauer.playing = false),
 					func():
 						textbox.addText("Ms. Mauer", "Then go away!\nThis isn't a playground!", 
 							func(): 
 								camera.position = Vector2(0.0,0.0)
 								msmauer = 2
+								$MsMauer.playing = false
 						)
 				)
 		elif msmauer == 2:
 			$Objects/Player/Camera2D.zoom = Vector2(5.0,5.0)
 			if Input.is_action_just_pressed("Action1") and player.dir == 'u' && textbox.state == "ready":
+				$MsMauer.playing = true
 				textbox.addQuestion("Ms. Mauer", "Did you change your mind?\n    Yes("+Utils.getKey("Action1")+") No("+Utils.getKey("Action2")+")",
 					func():
 						textbox.addText("Ms. Mauer", "It's not easy in there, yk?")
-						textbox.addText("Ms. Mauer", "If you want to get in...\nTHEN SHOW ME YOUR\nSKILLS!", func(): fightState = 1),
+						textbox.addText("Ms. Mauer", "If you want to get in...\nTHEN SHOW ME YOUR\nSKILLS!", func(): fightState = 1;$MsMauer.playing = false),
 					func():
+						$MsMauer.playing = false
 						angry += 1
 						if angry == 1:
 							textbox.addText("Ms. Mauer", "THEN GO AWAY!")
@@ -67,7 +73,10 @@ func _process(delta: float) -> void:
 			rock.visible = true
 			if rock.position.y <= 0:
 				rock.position.y += 8
-			elif Input.is_anything_pressed():
+			elif not stein:
+				$"Objects/Player/SüßliSteinli/Stein".play()
+				stein=true
+			if Input.is_anything_pressed() and stein:
 				get_tree().reload_current_scene()
 		elif msmauer == 6:
 			$Objects/Player/Camera2D.zoom = Vector2(5.0,5.0)
@@ -92,6 +101,8 @@ func fightProcess(delta):
 		var spookyman = $UI/Spookyman
 		if spookyman.position.x != 0: spookyman.position.x -= 10
 		elif textbox.textQueue.is_empty(): 
+			$UI/Spookyman/Spookyman.playing = true
+			Utils.piepmatz.playing = false
 			$UI/Black.visible = true
 			textbox.addText("???", "Yo, wassup")
 			textbox.addText("???", "I'm the Spookyman.")
@@ -100,11 +111,11 @@ func fightProcess(delta):
 			textbox.addQuestion("Spookyman","If you want, you can\ndo this puzzle instead\nSure("+Utils.getKey("Action1")+") No thanks("+Utils.getKey("Action2")+")",
 				func():
 					textbox.clear()
-					textbox.addText("Spookyman", "ok good luck!\nor bad luck! (if you\ndon't like good luck)", func(): fightState = 2; textbox.clear()),
+					textbox.addText("Spookyman", "ok good luck!\nor bad luck! (if you\ndon't like good luck)", func(): fightState = 2; textbox.clear(); $UI/Spookyman/Spookyman.playing = false),
 				func():
 					textbox.clear()
 					textbox.addText("Spookyman", "You don't want to do\nmy puzzle?")
-					textbox.addText("Spookyman", "That doesn't sound like\nmy problem! ;)", func(): fightState = 2; textbox.clear())
+					textbox.addText("Spookyman", "That doesn't sound like\nmy problem! ;)", func(): fightState = 2; textbox.clear(); $UI/Spookyman/Spookyman.playing = false)
 			)
 		else:
 			return
@@ -124,15 +135,17 @@ func fightProcess(delta):
 		else:
 			msmauer = 6
 			var hanssprite = hans.get_node("AnimatedSprite2D")
+			$"Objects/Player/SüßliSteinli/Stein".play()
 			hanssprite.rotation = 0
 			hanssprite.play("default")
 			fightState = 4
 			player.canMove = true
 	elif fightState == 4:
 		if area == "hans" and textbox.state == "ready" and Input.is_action_just_pressed("Action1"):
+			$Objects/Hans/Hans.playing = true
 			textbox.addText("Hans", "YO KLAUS!", func(): $UI/DingsBums.visible = true)
 			textbox.addText("Hans", "I found some cool thing\nand wanted to test it\nwith you!", func(): $Objects/EpicCamera.enabled = true; player.get_node("Camera2D").enabled = false; $UI/DingsBums.visible = false)
-			textbox.addText("Hans", "What do you think\ndoes that button do?", func(): fightState = 5) 
+			textbox.addText("Hans", "What do you think\ndoes that button do?", func(): fightState = 5; $Objects/Hans/Hans.playing=false) 
 	elif fightState == 5:
 		$Objects/Hans/AnimatedSprite2D.animation = "back"
 		var beam = $Objects/Beam
@@ -141,6 +154,7 @@ func fightProcess(delta):
 			Utils.disableInput()
 			beamState = 1
 			timer = 4
+			$Objects/Beam/AudioStreamPlayer2D.playing = true
 		else:
 			if timer <= 0:
 				if beamState == 1:
@@ -164,8 +178,9 @@ func fightProcess(delta):
 					timer = 2
 					beamState = 4
 				elif beamState == 4:
+					$Objects/Hans/Hans.playing=true
 					Utils.enableInput()
-					textbox.addText("Hans","Lol", func(): $Objects/EpicCamera.enabled = false; $Objects/Player/Camera2D.enabled = true; $Objects/Hans/AnimatedSprite2D.play("default"); textbox.addText("Hans","That was fun!"))
+					textbox.addText("Hans","Lol", func(): $Objects/EpicCamera.enabled = false; $Objects/Player/Camera2D.enabled = true; $Objects/Hans/AnimatedSprite2D.play("default"); textbox.addText("Hans","That was fun!",func():$Objects/Hans/Hans.playing = false))
 					beamState = 5
 					fightState = 6
 					return

@@ -8,6 +8,7 @@ var spawn: Vector2
 
 
 func _ready() -> void:
+	if not Utils.piepmatz.playing: Utils.piepmatz.playing = true
 	$Objects/Chillguy/AnimatedSprite2D.play("idle")
 	if not spawn: player.position = Vector2(0.0,113.0)
 	else: player.position = spawn
@@ -22,11 +23,11 @@ func _process(delta: float) -> void:
 		queue_free()
 	
 	if area == "chillguy" and player.dir == 'u' and textbox.state == "ready" and Input.is_action_just_pressed("Action1"):
+		$Objects/Chillguy/Chillguy.playing=true
 		textbox.addText("Chillguy", "Yo, wassup?")
 		textbox.addText("Klaus", "I'm searching a castle \nwhere some Kasimir lives in.\nDid you see one?")
 		textbox.addText("Chillguy", "Yeah, I think\n it is in the north.")
-		textbox.addText("Klaus", "Ok, thanks!")
-
+		textbox.addText("Klaus", "Ok, thanks!", func():$Objects/Chillguy/Chillguy.playing=false)
 
 func _stadt_exit(body: Node2D) -> void:
 	cam.zoom = Vector2(12.0,12.0)

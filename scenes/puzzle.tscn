@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cwa31u6k2xgtm" path="res://scenes/mobileControls.tscn" id="3_ibph6"]
 [ext_resource type="Texture2D" uid="uid://uci6wn47wc0s" path="res://sprites/puzzle/Boden.png" id="4_3asjn"]
 [ext_resource type="FontFile" uid="uid://ys0gr5yl0ufu" path="res://sprites/Comicoro.ttf" id="6_wsi0i"]
+[ext_resource type="AudioStream" uid="uid://budqlcnm3uibx" path="res://audio/Drop.ogg" id="8_ctskp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t8qc4"]
 texture = ExtResource("4_3asjn")
@@ -72,3 +73,6 @@ offset_right = 29.0
 offset_bottom = 68.0
 text = "to return"
 label_settings = SubResource("LabelSettings_ibph6")
+
+[node name="Drop" type="AudioStreamPlayer" parent="." unique_id=391483030]
+stream = ExtResource("8_ctskp")

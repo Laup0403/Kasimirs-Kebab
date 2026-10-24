@@ -1,8 +1,12 @@
 extends Node2D
 
+func _ready() -> void:
+	if not Utils.mainmenutheme.playing:
+		Utils.mainmenutheme.playing = true
+
 ## Main Menu ##
 func _main_start() -> void:
-	get_tree().change_scene_to_file("res://scenes/chapter1.tscn")
+	$"Übergang".outro(func():get_tree().change_scene_to_file("res://scenes/chapter1.tscn");Utils.mainmenutheme.playing = false)
 func _main_load() -> void:
 	$Buttons/Main.visible = false
 	$Buttons/Load.visible = true
@@ -14,15 +18,15 @@ func _main_exit() -> void:
 
 ## Load Menu ##
 func _load_chapter1() -> void:
-	get_tree().change_scene_to_file("res://scenes/chapter1.tscn")
+	$"Übergang".outro(func():get_tree().change_scene_to_file("res://scenes/chapter1.tscn");Utils.mainmenutheme.playing = false)
 func _load_chapter2() -> void:
-	get_tree().change_scene_to_file("res://scenes/chapter2.tscn")
+	$"Übergang".outro(func():get_tree().change_scene_to_file("res://scenes/chapter2.tscn");Utils.mainmenutheme.playing = false)
 func _load_chapter3() -> void:
-	get_tree().change_scene_to_file("res://scenes/chapter3.tscn")
+	$"Übergang".outro(func():get_tree().change_scene_to_file("res://scenes/chapter3.tscn");Utils.mainmenutheme.playing = false)
 func _load_chapter4() -> void:
-	get_tree().change_scene_to_file("res://scenes/chapter4.tscn")
+	$"Übergang".outro(func():get_tree().change_scene_to_file("res://scenes/chapter4.tscn");Utils.mainmenutheme.playing = false)
 func _load_chapter5() -> void:
-	get_tree().change_scene_to_file("res://scenes/chapter5.tscn")
+	$"Übergang".outro(func():get_tree().change_scene_to_file("res://scenes/chapter5.tscn");Utils.mainmenutheme.playing = false)
 func _load_back() -> void:
 	$Buttons/Main.visible = true
 	$Buttons/Load.visible = false

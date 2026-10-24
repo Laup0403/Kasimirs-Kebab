@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cblgthifee85" path="res://scenes/textbox.tscn" id="3_h3v6u"]
 [ext_resource type="PackedScene" uid="uid://cwa31u6k2xgtm" path="res://scenes/mobileControls.tscn" id="4_8prf0"]
 [ext_resource type="Texture2D" uid="uid://5667gxtu12cf" path="res://sprites/Chapter1/Black.png" id="4_n8wyu"]
+[ext_resource type="AudioStream" uid="uid://bdtuv8muns1dy" path="res://audio/schloss.ogg" id="6_wk4o3"]
+[ext_resource type="AudioStream" uid="uid://bub6prtu0wu3h" path="res://audio/schloss2.ogg" id="7_3j33c"]
 [ext_resource type="Texture2D" uid="uid://c153i5sge8sy1" path="res://sprites/Stadt/cabbage.png" id="7_4frf5"]
 [ext_resource type="Texture2D" uid="uid://fi7qn4mklsls" path="res://sprites/puzzle/Döner.png" id="8_4frf5"]
 
@@ -112,6 +114,12 @@ visible = false
 scale = Vector2(1920, 1080)
 texture = ExtResource("4_n8wyu")
 centered = false
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="." unique_id=590361315]
+stream = ExtResource("6_wk4o3")
+
+[node name="Audio2" type="AudioStreamPlayer2D" parent="." unique_id=795018428]
+stream = ExtResource("7_3j33c")
 
 [node name="MainRoom" type="Node2D" parent="." unique_id=946079606]
 
@@ -287,6 +295,7 @@ zoom = Vector2(12, 12)
 position = Vector2(785, -206)
 texture = ExtResource("7_4frf5")
 
+[connection signal="finished" from="Audio" to="." method="_on_audio_finished"]
 [connection signal="animation_finished" from="MainRoom/Wallbottom/Gatter" to="." method="_gatter_finished"]
 [connection signal="body_entered" from="MainRoom/Area2D" to="." method="_door"]
 [connection signal="body_entered" from="TheEnd/Döni" to="." method="_döner"]

@@ -15,6 +15,7 @@ var exit = false
 var intro = false
 
 func _ready() -> void:
+	Utils.piepmatz.playing = true
 	übergang.intro()
 
 func _process(delta: float) -> void:
@@ -37,7 +38,7 @@ func _process(delta: float) -> void:
 				player.canMove = true
 				coolAnimation = 0
 				textbox.addText("Hans", "Today a new kebab shop \nhas opened in town.")
-				textbox.addText("Hans", "You MUST try it.\nGo east to the \nkebab shop.")
+				textbox.addText("Hans", "You MUST try it.\nGo east to the \nkebab shop.", func():$Objects/Hans/Hans.playing = false)
 	elif hansstate == 3:
 		var anim = hans.get_node("AnimatedSprite2D")
 		if anim.position.y >= -70:
@@ -54,8 +55,11 @@ func _process(delta: float) -> void:
 			hans.get_node("Area1/Coll1").disabled = true
 			hans.get_node("Area1/Coll2").disabled = false
 			area = "none"
+			$Objects/Hans/Hans.playing = false
 	elif hansstate == 4:
 		if area == "hans":
+			if not $Objects/Hans/Hans.playing:
+				$Objects/Hans/Hans.playing = true
 			textbox.addText("Hans", "Look at that amazing view!", func(): hansstate = 5)
 			textbox.addText("Hans","I have an Idea!")
 			textbox.addText("Hans","Let's race!\nWhoever finds the kebab\nskewer first wins!", func(): hansstate = 6; textbox.clear())
@@ -70,6 +74,7 @@ func _process(delta: float) -> void:
 			hans.rotation += 0.1
 		else:
 			hansstate = 7
+			$Objects/Hans/Hans.playing = false
 	elif hansstate == 7:
 		hans.visible = false
 		if intro == true:
@@ -79,6 +84,7 @@ func _process(delta: float) -> void:
 				camera.global_position.y -= 1
 			elif camera.global_position.y != -790.0:
 				camera.global_position.y = -790.0
+				$Map/Fart.play()
 			elif Input.is_anything_pressed():
 				player.canMove = true
 				camera.enabled = false
@@ -102,7 +108,7 @@ func _process(delta: float) -> void:
 		hansstate = 8
 		textbox.clear()
 		monster = false
-		textbox.addText("???", "I warned you!", func(): $UI/Monster.visible = true; hansstate = 9; return)
+		textbox.addText("???", "I warned you!", func(): $UI/Monster.visible = true; hansstate = 9;Utils.piepmatz.stop();$UI/Monster/Spookyman.playing=true; return)
 	elif hansstate == 9:
 		if Input.is_action_just_pressed("Action1"):
 			get_tree().reload_current_scene()
@@ -122,17 +128,19 @@ func _process(delta: float) -> void:
 	## Check Area ##
 	elif Input.is_action_just_pressed("Action1") and textbox.state == "ready":
 		if area == "hans" and player.dir == 'u':
+			$Objects/Hans/Hans.playing=true
 			if hansstate == 0:
 				textbox.addText("Hans", "Yo Klaus!", func(): coolAnimation = 1)
 				hansstate = 1
 			elif hansstate == 1:
-				textbox.addText("Hans", "What are you waiting for?")
+				textbox.addText("Hans", "What are you waiting for?", func():$Objects/Hans/Hans.playing = false)
 			elif hansstate == 2:
 				textbox.addText("Klaus", "The kebab skewer was\nstolen by a cabbage!")
 				textbox.addText("Hans", "Oh, no!\nWe're did that cabbage go?")
 				textbox.addText("Klaus", "The Doner guy said\nhe went to the valley.")
 				textbox.addText("Hans", "We must find this cabbage!\nLet's go after him!", func(): hansstate = 3)
 		elif area == "döner" and player.dir == "u":
+			$"Objects/Döni/AudioStreamPlayer2D".playing = true
 			if !dönispoken :
 				textbox.addQuestion(
 				"Doner guy", 
@@ -142,12 +150,12 @@ func _process(delta: float) -> void:
 					dönispoken = true 
 					textbox.addText("Doner guy", "Sorry but my kebab skewer\nwas stolen by some\ncabbage.")
 					textbox.addText("Doner guy", "Can you help me\nget it back, please?")
-					textbox.addText("Doner guy", "The cabbage went towards \nthe valley."), 
+					textbox.addText("Doner guy", "The cabbage went towards \nthe valley.", func():$"Objects/Döni/AudioStreamPlayer2D".playing = false), 
 				func(): 
-					textbox.addText("Doner guy", "Ok")
+					textbox.addText("Doner guy", "Ok", func():$"Objects/Döni/AudioStreamPlayer2D".playing = false)
 				)
 			else:
-				textbox.addText("Doner guy", "Please, get back my\nkebab skewer. You'll get a\ndoner kebab for free!")
+				textbox.addText("Doner guy", "Please, get back my\nkebab skewer. You'll get a\ndoner kebab for free!", func(): $"Objects/Döni/AudioStreamPlayer2D".playing = false)
 		elif area == "sign" and player.dir == "u":
 			textbox.addText("Sign", "< a tuff house\n\\ valley\n> kebab shop")
 

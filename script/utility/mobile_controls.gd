@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
 			$Arrows.visible = false
 			$Question.visible = false
 			$Textbox.visible = true
+			return
 		elif chapter.name == "chapter2" and (chapter.msmauer == 3 or (chapter.msmauer == 0 and chapter.area == "msmauer") or chapter.fightState >= 1):
 			$Arrows.visible = false
 			$Question.visible = false
