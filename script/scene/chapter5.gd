@@ -11,6 +11,7 @@ var audioEnd = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	player.position = Vector2(0.0,0.0)
 	player.dir = 'u'
 	player.canMove = false
 	übergang.intro(func():
