@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bdtuv8muns1dy" path="res://audio/schloss.ogg" id="6_wk4o3"]
 [ext_resource type="AudioStream" uid="uid://bub6prtu0wu3h" path="res://audio/schloss2.ogg" id="7_3j33c"]
 [ext_resource type="Texture2D" uid="uid://c153i5sge8sy1" path="res://sprites/Stadt/cabbage.png" id="7_4frf5"]
+[ext_resource type="AudioStream" uid="uid://bxu04slb1l80j" path="res://audio/schlossloop.ogg" id="8_3uxp0"]
 [ext_resource type="Texture2D" uid="uid://fi7qn4mklsls" path="res://sprites/puzzle/Döner.png" id="8_4frf5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_msq8d"]
@@ -120,6 +121,10 @@ stream = ExtResource("6_wk4o3")
 
 [node name="Audio2" type="AudioStreamPlayer2D" parent="." unique_id=795018428]
 stream = ExtResource("7_3j33c")
+
+[node name="Schlossloop" type="AudioStreamPlayer" parent="." unique_id=1031755994]
+stream = ExtResource("8_3uxp0")
+volume_db = -4.0
 
 [node name="MainRoom" type="Node2D" parent="." unique_id=946079606]
 
@@ -286,6 +291,7 @@ position = Vector2(784, -299.5)
 shape = SubResource("RectangleShape2D_vep1d")
 
 [node name="Player" parent="." unique_id=2062820343 instance=ExtResource("1_sdm8v")]
+position = Vector2(0, -1)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=241457083]
 offset = Vector2(0, -16)
@@ -296,6 +302,7 @@ position = Vector2(785, -206)
 texture = ExtResource("7_4frf5")
 
 [connection signal="finished" from="Audio" to="." method="_on_audio_finished"]
+[connection signal="finished" from="Audio2" to="." method="_on_loop"]
 [connection signal="animation_finished" from="MainRoom/Wallbottom/Gatter" to="." method="_gatter_finished"]
 [connection signal="body_entered" from="MainRoom/Area2D" to="." method="_door"]
 [connection signal="body_entered" from="TheEnd/Döni" to="." method="_döner"]

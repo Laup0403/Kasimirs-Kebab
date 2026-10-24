@@ -5,6 +5,7 @@ extends Node2D
 @onready var cam = $Objects/Player/Camera2D
 var area = "none"
 var spawn: Vector2
+var is_changing_scene = false
 
 
 func _ready() -> void:
@@ -38,5 +39,11 @@ func _chillguy(body: Node2D) -> void:
 func _exited(body: Node2D) -> void:
 	if body == player: area = "none"
 func _castle(body: Node2D) -> void:
-	if body == player:
-		$"UI/Übergang".outro(func():get_tree().change_scene_to_file("res://scenes/chapter5.tscn"))
+	if body == player and not is_changing_scene:
+		is_changing_scene = true
+		$"UI/Übergang".outro(func():
+			var nextRes = load("res://scenes/chapter5.tscn")
+			var next = nextRes.instantiate()
+			get_tree().root.add_child(next)
+			queue_free()
+		)

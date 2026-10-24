@@ -10,7 +10,7 @@ var area = "none"
 var room = "none"
 var timer = 0
 var back = false
-var speaken = [false, false, false, false]
+var speaken = [false,false,false,false]
 
 func _ready() -> void:
 	if not Utils.piepmatz.playing: Utils.piepmatz.playing = true

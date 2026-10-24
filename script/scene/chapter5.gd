@@ -11,6 +11,7 @@ var audioEnd = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Utils.piepmatz.stop()
 	player.position = Vector2(0.0,0.0)
 	player.dir = 'u'
 	player.canMove = false
@@ -34,7 +35,10 @@ func _process(delta: float) -> void:
 				else:
 					$UI/black.visible = true
 					if Input.is_anything_pressed():
-						get_tree().change_scene_to_file("res://scenes/win.tscn")
+						var nextRes = load("res://scenes/win.tscn")
+						var next = nextRes.instantiate()
+						get_tree().root.add_child(next)
+						queue_free()
 			
 			if audioEnd:
 				timer -= delta
@@ -46,11 +50,11 @@ func _process(delta: float) -> void:
 func _gatter_finished() -> void:
 	textbox.addText("Klaus", "Now there is no way back", func():player.canMove=true;$Audio.playing = true)
 
-
 func _door(body: Node2D) -> void:
 	if body == player:
 		übergang.outro(
 			func():
+				player.position = Vector2(0.0,0.0)
 				player.get_node("Camera2D").enabled = false
 				$TheEnd/Camera.enabled = true
 				player.canMove = true
@@ -63,10 +67,12 @@ func _döner(body: Node2D) -> void:
 func _exit(body: Node2D) -> void:
 	area = "none"
 func _on_audio_finished() -> void:
-	print("Moin")
 	if endAnim:
 		audioEnd = true
-		$Audio.stream_paused = true
-		$Audio2.playing = true
+		$Audio.stop()
+		$Audio2.play()
 	else:
 		$Audio.playing = true
+func _on_loop() -> void:
+	$Audio2.stop()
+	$Schlossloop.playing = true

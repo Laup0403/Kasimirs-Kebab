@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/schloss2.ogg-65464e99ae05d057017294a102fbb111
 
 [params]
 
-loop=true
+loop=false
 loop_offset=4.4
 bpm=0.0
 beat_count=0
